@@ -1,0 +1,23 @@
+.SubNavbarContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #111;
+    background-color: #C9C0BB;
+    padding-top: 3px;
+    height: 20px;
+    width: 80%
+
+}
+.SubNavbarContainer h3{
+    padding: 10px;
+}
+.SubNavbarUsername{
+    color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    background-color: #C9C0BB;
+    border-bottom: 2px solid #111;
+    width: 80%
+}

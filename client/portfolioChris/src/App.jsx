@@ -1,12 +1,14 @@
-import { useState } from 'react';
-
-import viteLogo from '/vite.svg';
 import './App.css';
+import { HomeViews } from './views/HomeViews';
+import { ProjectViews } from './views/projectsView/ProjectViews';
 
 function App() {
-	const [count, setCount] = useState(0);
-
-	return <></>;
+	return (
+		<>
+			<HomeViews />
+			<ProjectViews />
+		</>
+	);
 }
 
 export default App;

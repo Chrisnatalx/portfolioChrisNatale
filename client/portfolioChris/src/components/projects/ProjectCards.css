@@ -1,0 +1,15 @@
+.ProjectCard{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #C9C0BB;
+    width: 100%;
+
+}
+.ProjectCard img{
+    height: 100%px;
+    width: 100%;
+
+}
