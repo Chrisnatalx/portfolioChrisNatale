@@ -21,6 +21,8 @@
 .NavbarLargeButtonsContent button {
     border: 1px solid #000;
     background: #afafaf;
+    color: #111;
+    font-family: 'msSanserif', sans-serif;
 }
 .NavbarLogoIg{
     height: 30px;

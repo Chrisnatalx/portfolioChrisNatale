@@ -10,6 +10,11 @@
     border-bottom: 2px solid #111;
 
 }
+.imageContainer img{
+    border-radius: 50%;
+    height: 300px;
+    margin: 20px;
+}
 .InfoContainer{
     display: flex;
     flex-direction: column;
@@ -39,6 +44,7 @@
     border-right: 3px solid black;
     border-bottom: 3px solid black;
     color: #111;
+    font-family: 'msSanserif', sans-serif;
 }
 .cvButton a{
     color: #111;
@@ -49,9 +55,10 @@
     flex-direction: column;
     justify-content: start;
     margin-left: 20px;
+    width: 100%;
 
 }
-.presentationInfo h3{
+.presentationInfo h2{
     color: #FFF;
 }
 .ButtonsPersonal{
@@ -68,4 +75,180 @@
 }
 .ButtonsPersonal a:visited{
     color: #111;
+}
+
+@media (max-width: 1200px) {
+
+    .personalInformation{
+        border-top: solid 2px #FFF;
+        width: 80%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+        background-color: #C9C0BB;
+        border-bottom: 2px solid #111;
+    
+    }
+    .InfoContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Information{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        width: 100%;
+        align-items: center;
+        justify-items: center;
+        margin-left: -10px;
+    
+    }
+    .presentationInfo{
+        width: 100%;
+    }
+}
+@media (max-width: 850px) {
+
+    .personalInformation{
+        border-top: solid 2px #FFF;
+        width: 80%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        justify-content: center;
+        background-color: #C9C0BB;
+        border-bottom: 2px solid #111;
+    
+    }
+    .InfoContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .Information{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        width: 100%;
+        font-size: 14px;
+        align-items: center;
+        justify-items: center;
+        margin-left: -40px;
+    
+    }
+    .imageContainer img{
+        border-radius: 50%;
+        height: 200px;
+        margin: 20px;
+    }
+    .presentationInfo{
+        font-size: 14px;
+    }
+    .presentationInfo{
+        width: 100%;
+    }
+}
+@media (max-width: 667px) {
+    .personalInformation{
+        border-top: solid 2px #FFF;
+        width: 80%;
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        align-items: center;
+        justify-content: center;
+        background-color: #C9C0BB;
+        border-bottom: 2px solid #111;
+    
+    }
+    .InfoContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Information{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        width: 80%;
+        font-size: 8px;
+        align-items: center;
+        justify-items: center;
+        margin-left: -40px;
+    
+    }
+    .imageContainer img{
+        border-radius: 50%;
+        height: 100px;
+        margin: 20px;
+    }
+    .presentationInfo{
+        font-size: 8px;
+        width: 100%;
+    }
+    .cvButton{
+        font-size: 8px;
+        height: auto ;
+    }
+    .ButtonsPersonal a{
+        font-size: 20px;
+    }
+    .presentationInfo{
+        width: 100%;
+    }
+}
+@media (max-width: 477px) {
+    .personalInformation{
+        border-top: solid 2px #FFF;
+        width: 80%;
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        align-items: center;
+        justify-content: center;
+        background-color: #C9C0BB;
+        border-bottom: 2px solid #111;
+    
+    }
+    .InfoContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Information{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        width: 80%;
+        font-size: 8px;
+        align-items: center;
+        justify-items: center;
+        margin-left: -10px;
+    
+    }
+    .imageContainer img{
+        border-radius: 50%;
+        height: 100px;
+        margin: 5px;
+    }
+    .presentationInfo{
+        font-size: 8px;
+        width: 200px;
+    }
+    .cvButton{
+        font-size: 8px;
+        height: auto ;
+    }
+    .ButtonsPersonal a{
+        font-size: 20px;
+    }
+
 }

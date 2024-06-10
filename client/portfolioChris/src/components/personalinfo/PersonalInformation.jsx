@@ -12,7 +12,6 @@ export const PersonalInformation = () => {
 					<img
 						src="https://res.cloudinary.com/decjjrdmm/image/upload/v1705609984/83377576_2_fjiawt.jpg"
 						alt="Foto perfil"
-						style={{ borderRadius: '50%', height: '300px', margin: '20px' }}
 					/>
 				</div>
 				<div className="InfoContainer">
@@ -25,21 +24,21 @@ export const PersonalInformation = () => {
 						<h1>Idiomas</h1>
 					</div>
 					<div className="Button">
-						<button className="cvButton">
-							<h1>
-								<a href="https://drive.google.com/file/d/1enPsbQqd5HSkiwx2XSzuVH6gda9Ra5LG/view?usp=sharing">
+						<a href="https://drive.google.com/file/d/1enPsbQqd5HSkiwx2XSzuVH6gda9Ra5LG/view?usp=sharing">
+							<button className="cvButton">
+								<h1>
 									<strong>Download CV</strong>
-								</a>
-							</h1>
-						</button>
+								</h1>
+							</button>
+						</a>
 					</div>
 				</div>
 				<div className="presentationInfo">
 					<h1>Christian Natale.</h1>
 					<h1>FullStack Developer</h1>
-					<h3>
+					<h2>
 						<strong>Ver Traduccion</strong>
-					</h3>
+					</h2>
 					<div className="ButtonsPersonal">
 						<a href="https://github.com/Chrisnatalx" target="_blank">
 							<FaGithub />
@@ -47,7 +46,10 @@ export const PersonalInformation = () => {
 						<a href="mailTo:natale.christian.a@gmail.com">
 							<BiLogoGmail />
 						</a>
-						<a href="https://www.linkedin.com/in/christian-natale-/">
+						<a
+							href="https://www.linkedin.com/in/christian-natale-/"
+							target="_blank"
+						>
 							<FaLinkedin />
 						</a>
 					</div>
