@@ -27,7 +27,7 @@ export const PersonalInformation = () => {
 						<a href="https://drive.google.com/file/d/1enPsbQqd5HSkiwx2XSzuVH6gda9Ra5LG/view?usp=sharing">
 							<button className="cvButton">
 								<h1>
-									<strong>Download CV</strong>
+									<strong>Descargar CV</strong>
 								</h1>
 							</button>
 						</a>

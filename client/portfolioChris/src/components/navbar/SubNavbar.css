@@ -8,10 +8,22 @@
     height: 20px;
     width: 80%;
 
+
 }
 .SubNavbarContainer h3{
     padding: 10px;
 }
+.SubNavbarContainer a {
+    text-decoration: none;
+}
+
+.SubNavbarContainer a:visited {
+    color: #111;
+}
+.SubNavbarContainer h3::first-letter {
+    text-decoration: underline;
+    
+  }
 .SubNavbarUsername{
     color: #111;
     display: flex;

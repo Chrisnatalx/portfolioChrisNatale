@@ -11,17 +11,17 @@ export const NavbarLarge = () => {
 						alt="logo instagram"
 						className="NavbarLogoIg"
 					/>
-					<h2>Chrisnatalx-cv.exe</h2>
+					<h2>Portfolio.exe</h2>
 				</div>
 				<div className="NavbarLargeButtonsContent">
 					<button>
-						<strong>-</strong>
+						<strong>&#8213;</strong>
 					</button>
 					<button>
-						<strong>⬜</strong>
+						<strong>🗖</strong>
 					</button>
-					<button style={{ paddingLeft: '3px' }}>
-						<strong>X</strong>
+					<button style={{ marginLeft: '3px' }}>
+						<strong>&#10005;</strong>
 					</button>
 				</div>
 			</div>

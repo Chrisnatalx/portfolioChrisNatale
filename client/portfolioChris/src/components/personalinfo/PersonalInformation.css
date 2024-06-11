@@ -60,6 +60,12 @@
 }
 .presentationInfo h2{
     color: #FFF;
+    
+}
+.presentationInfo h2:hover{
+    color: #FFF;
+    text-decoration: underline;
+    
 }
 .ButtonsPersonal{
     display: flex;
@@ -110,6 +116,11 @@
     .presentationInfo{
         width: 100%;
     }
+    .presentationInfo h2:hover{
+        color: #FFF;
+        text-decoration: underline;
+        
+    }
 }
 @media (max-width: 850px) {
 
@@ -149,9 +160,13 @@
     }
     .presentationInfo{
         font-size: 14px;
-    }
-    .presentationInfo{
         width: 100%;
+    }
+   
+    .presentationInfo h2:hover{
+        color: #FFF;
+        text-decoration: underline;
+        
     }
 }
 @media (max-width: 667px) {
@@ -193,6 +208,11 @@
         font-size: 8px;
         width: 100%;
     }
+    .presentationInfo h2:hover{
+        color: #FFF;
+        text-decoration: underline;
+        
+    }
     .cvButton{
         font-size: 8px;
         height: auto ;
@@ -200,9 +220,7 @@
     .ButtonsPersonal a{
         font-size: 20px;
     }
-    .presentationInfo{
-        width: 100%;
-    }
+   
 }
 @media (max-width: 477px) {
     .personalInformation{
@@ -242,6 +260,11 @@
     .presentationInfo{
         font-size: 8px;
         width: 200px;
+    }
+    .presentationInfo h2:hover{
+        color: #FFF;
+        text-decoration: underline;
+        
     }
     .cvButton{
         font-size: 8px;
