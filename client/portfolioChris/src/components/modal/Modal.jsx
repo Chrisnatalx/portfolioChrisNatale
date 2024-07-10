@@ -2,9 +2,11 @@ import React from 'react';
 import './Modal.css';
 import { IoLogoVercel } from 'react-icons/io5';
 import { FaGithub } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 export const Modal = ({ project, onClose }) => {
 	if (!project) return null;
 
+	const [t] = useTranslation('global');
 	return (
 		<div className="modal">
 			<div className="modalContent">
@@ -19,7 +21,7 @@ export const Modal = ({ project, onClose }) => {
 				</div>
 
 				<h2>
-					<strong>Technologies:</strong> {project.technologies}
+					<strong>{t('modal.technologies')}</strong> {project.technologies}
 				</h2>
 				<div className="ModalButtons">
 					<a href={project.github}>

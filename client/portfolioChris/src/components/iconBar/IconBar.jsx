@@ -5,7 +5,7 @@ import { IoPerson } from 'react-icons/io5';
 export const IconBar = () => {
 	return (
 		<div className="IconBarContainer">
-			<div className="IconBarButton">
+			<div className="IconBarButtonTable">
 				<button>
 					<FaTableCells />
 				</button>

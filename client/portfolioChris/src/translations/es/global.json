@@ -1,0 +1,17 @@
+{
+    "navbar":{
+        "home": "Inicio",
+        "projects": "Proyectos",
+        "help": "Ayuda"
+    },
+    "personalInfo":{
+        "age":"Edad",
+        "projects": "Proyectos",
+        "languages":"Idiomas",
+        "button":"Descargar CV",
+        "translate":"Ver traduccion"
+    },
+    "modal":{
+        "technologies":"Tecnologias"
+    }
+}
