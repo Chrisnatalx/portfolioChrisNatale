@@ -10,6 +10,7 @@ export const getProjectsController = async () => {
 			image: project.image,
 			deploy: project.deploy,
 			technologies: project.technologies,
+			github: project.github,
 		};
 	});
 	return newProject;
