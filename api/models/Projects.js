@@ -25,6 +25,9 @@ const Projects = db.define(
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
+		github: {
+			type: DataTypes.STRING,
+		},
 	},
 	{ timestamps: false }
 );
