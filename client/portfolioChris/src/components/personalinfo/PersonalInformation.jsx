@@ -4,7 +4,6 @@ import { FaGithub } from 'react-icons/fa';
 import { BiLogoGmail } from 'react-icons/bi';
 import { FaLinkedin } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
-import i18next, { changeLanguage } from 'i18next';
 
 export const PersonalInformation = () => {
 	const [t, i18n] = useTranslation('global');

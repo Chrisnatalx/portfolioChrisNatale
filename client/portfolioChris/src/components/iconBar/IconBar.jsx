@@ -1,18 +1,18 @@
 import React from 'react';
 import './IconBar.css';
-import { FaTableCells, FaLocationDot } from 'react-icons/fa6';
-import { IoPerson } from 'react-icons/io5';
+import { FaTable } from 'react-icons/fa';
+import { IoPerson, IoLocationSharp } from 'react-icons/io5';
 export const IconBar = () => {
 	return (
 		<div className="IconBarContainer">
 			<div className="IconBarButtonTable">
 				<button>
-					<FaTableCells />
+					<FaTable />
 				</button>
 			</div>
 			<div className="IconBarButton">
 				<button>
-					<FaLocationDot />
+					<IoLocationSharp />
 				</button>
 			</div>
 			<div className="IconBarButton">
