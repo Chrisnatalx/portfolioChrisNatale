@@ -24,7 +24,7 @@ export const Modal = ({ project, onClose }) => {
 					<strong>{t('modal.technologies')}</strong> {project.technologies}
 				</h2>
 				<div className="ModalButtons">
-					<a href={project.github}>
+					<a href={project.github} target="_blank" rel="noopener noreferrer">
 						<button>
 							<FaGithub />
 						</button>

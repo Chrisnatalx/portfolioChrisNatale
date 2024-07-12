@@ -12,9 +12,11 @@
 }
 .SubNavbarContainer h3{
     padding: 10px;
+    color: #111;
 }
 .SubNavbarContainer a {
     text-decoration: none;
+    color: #111;
 }
 
 .SubNavbarContainer a:visited {
