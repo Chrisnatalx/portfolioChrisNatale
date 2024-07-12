@@ -11,7 +11,9 @@ export const Projects = () => {
 
 	const getProjects = async () => {
 		try {
-			const response = await axios.get('http://localhost:3001/');
+			const response = await axios.get(
+				'https://portfoliochrisnatale-production.up.railway.app/projects'
+			);
 			return response.data;
 		} catch (error) {
 			console.log(error.message);
