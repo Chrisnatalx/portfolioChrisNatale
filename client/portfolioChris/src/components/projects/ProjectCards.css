@@ -6,10 +6,9 @@
     justify-content: center;
     background-color: #C9C0BB;
     width: 100%;
-
+    height: 500px;
 }
 .ProjectCard img{
-    height: 100%;
     width: 100%;
-
+    height: 100%;
 }

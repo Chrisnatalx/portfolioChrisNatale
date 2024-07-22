@@ -12,7 +12,7 @@
 }
 .imageContainer img{
     border-radius: 50%;
-    height: 300px;
+    height: 200px;
     margin: 20px;
 }
 .InfoContainer{
@@ -30,8 +30,19 @@
     justify-items: center;
 
 }
+.Information h1{
+    margin: 0px;
+}
+
+.presentationInfo h1{
+    margin: 0px;
+}
+.presentationInfo h2{
+    margin: 5px;
+}
 .Button{
     width: 80%;
+    margin-top: 15px;
 }
 .cvButton{
     background: #C9C0BB;
@@ -45,11 +56,9 @@
     border-bottom: 3px solid black;
     color: #111;
     font-family: 'msSanserif', sans-serif;
+    cursor: pointer;
 }
-.cvButton a{
-    color: #111;
-    font-family: 'msSanserif', sans-serif;
-}
+
 .presentationInfo{
     display: flex;
     flex-direction: column;
@@ -60,6 +69,8 @@
 }
 .presentationInfo h2{
     color: #FFF;
+    cursor: pointer;
+    margin-bottom: 10px;
     
 }
 .presentationInfo h2:hover{
@@ -72,6 +83,7 @@
     flex-direction: row;
     gap: 20px;
     color: #111;
+    cursor: pointer;
 
 }
 
@@ -81,6 +93,9 @@
 }
 .ButtonsPersonal a:visited{
     color: #111;
+}
+.ButtonsPersonal a:hover{
+    color: #504f4f;
 }
 
 @media (max-width: 1200px) {

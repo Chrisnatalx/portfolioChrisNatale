@@ -7,7 +7,7 @@ export const SubNavbar = () => {
 
 	return (
 		<>
-			<div className="SubNavbarContainer">
+			{/* <div className="SubNavbarContainer">
 				<a href="#Home">
 					<h3>{t('navbar.home')}</h3>
 				</a>
@@ -16,7 +16,7 @@ export const SubNavbar = () => {
 					<h3>{t('navbar.projects')}</h3>
 				</a>
 				<h3>{t('navbar.help')}</h3>
-			</div>
+			</div> */}
 			<div className="SubNavbarUsername">
 				<h1>ChrisNatalx</h1>
 			</div>
