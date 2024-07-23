@@ -8,12 +8,9 @@ import { Modal } from '../modal/Modal';
 export const Projects = () => {
 	const [data, setData] = useState([]);
 	const [selectedProject, setSelectedProject] = useState(null);
-
 	const getProjects = async () => {
 		try {
-			const response = await axios.get(
-				'https://portfoliochrisnatale-production.up.railway.app/projects'
-			);
+			const response = await axios.get(`${import.meta.env.VITE_URL}`);
 			return response.data;
 		} catch (error) {
 			console.log(error.message);
