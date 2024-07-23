@@ -12,3 +12,35 @@
     width: 100%;
     height: 100%;
 }
+
+@media (max-width: 1400px) { 
+    .ProjectCard{
+        height: 400px;
+    }
+}
+@media (max-width: 1250px) { 
+    .ProjectCard{
+        height: 350px;
+    }
+}
+@media (max-width: 950px) { 
+    .ProjectCard{
+        height: 300px;
+    }
+}
+
+@media (max-width: 900px) { 
+    .ProjectCard{
+        height: 250px;
+    }
+}
+@media (max-width: 750px) { 
+    .ProjectCard{
+        height: 200px;
+    }
+}
+@media (max-width: 500px) { 
+    .ProjectCard{
+        height: 150px;
+    }
+}

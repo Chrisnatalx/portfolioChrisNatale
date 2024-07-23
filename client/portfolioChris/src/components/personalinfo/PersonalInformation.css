@@ -290,3 +290,8 @@
     }
 
 }
+@media (max-width: 477px) {
+    .Information{
+        font-size: 7px;
+    }
+}
