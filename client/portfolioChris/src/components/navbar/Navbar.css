@@ -33,3 +33,9 @@
     height: 30px;
     width: 30px;
 }
+@media (max-width: 500px) { 
+    .NavbarLarge{
+        width: 100%;
+    }
+
+}

@@ -5,3 +5,10 @@
     align-items: center;
     margin-top: 30px;
 }
+
+@media (max-width: 500px) { 
+    .HomeViewContainer{
+        margin-top: 0px;
+    }
+
+}

@@ -10,7 +10,7 @@ export const HomeViews = () => {
 			<div className="HomeViewContainer" id="Home">
 				<Navbar />
 				<PersonalInformation />
-				<IconBar />
+				{/* <IconBar /> */}
 			</div>
 		</>
 	);

@@ -1,7 +1,7 @@
 
 .personalInformation{
-    border-top: solid 2px #FFF;
     width: 80%;
+    border-top: solid 2px #FFF;
     display: grid;
     grid-template-columns: 400px 1fr;
     align-items: center;
@@ -235,12 +235,14 @@
     .ButtonsPersonal a{
         font-size: 20px;
     }
-   
 }
+    
+
+
 @media (max-width: 477px) {
     .personalInformation{
         border-top: solid 2px #FFF;
-        width: 80%;
+        width: 100%;
         display: grid;
         grid-template-columns: 100px 1fr;
         align-items: center;
@@ -293,5 +295,11 @@
 @media (max-width: 477px) {
     .Information{
         font-size: 7px;
+    }
+}
+@media (max-width: 500px) {
+    .personalInformation{
+        width: 100%;
+        
     }
 }

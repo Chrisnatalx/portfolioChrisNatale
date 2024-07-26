@@ -13,7 +13,7 @@ export const NavbarLarge = () => {
 					/>
 					<h2>Portfolio.exe</h2>
 				</div>
-				<div className="NavbarLargeButtonsContent">
+				{/* <div className="NavbarLargeButtonsContent">
 					<button>
 						<strong>&#8213;</strong>
 					</button>
@@ -23,7 +23,7 @@ export const NavbarLarge = () => {
 					<button style={{ marginLeft: '3px' }}>
 						<strong>&#10005;</strong>
 					</button>
-				</div>
+				</div> */}
 			</div>
 			<SubNavbar />
 		</>
