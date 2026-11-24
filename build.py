@@ -43,6 +43,8 @@ PAIRS = [
     ('alt="Generador de tokens personales para el servidor MCP"', 'alt="Personal token generator for the MCP server"'),
     ('d: "Cotizador de eventos: propuestas con margen por ítem y página para el cliente."', 'd: "Event quoting engine: proposals with per-item margin and a page for the client."'),
     ('<dialog class="lb" id="lb" aria-label="Vista ampliada">', '<dialog class="lb" id="lb" aria-label="Enlarged view">'),
+    ('id="lbPrev" type="button" aria-label="Anterior">', 'id="lbPrev" type="button" aria-label="Previous">'),
+    ('id="lbNext" type="button" aria-label="Siguiente">', 'id="lbNext" type="button" aria-label="Next">'),
     ('id="lbClose" type="button" aria-label="Cerrar">', 'id="lbClose" type="button" aria-label="Close">'),
     ('>ampliar ⤢<', '>enlarge ⤢<'),
     ('poster="assets/video/bravia-whatsapp.jpg"', 'poster="../assets/video/bravia-whatsapp.jpg"'),
