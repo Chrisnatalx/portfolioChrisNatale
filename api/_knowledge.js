@@ -2,7 +2,7 @@
  * Base de conocimiento de AlterNata (el bot del portfolio).
  *
  * Solo contiene información que ya es pública en el sitio y en el CV.
- * Los clientes van anónimos a propósito: no agregar nombres de clientes acá.
+ * Christian tiene permiso para nombrar a los clientes (Bravía Kombucha, Globalex, RealtorMatch, Sarapura).
  * Si cambia el contenido del sitio, actualizar también este texto.
  * El archivo empieza con "_" para que Vercel no lo publique como función.
  */
@@ -40,13 +40,13 @@ export const KNOWLEDGE = `
 - Habilidades blandas: comunicación con perfiles técnicos y no técnicos, liderazgo de proyectos, autonomía, orientación a resultados.
 
 ## Proyectos
-Los proyectos de clientes son anónimos por confidencialidad. Nunca digas ni adivines el nombre de un cliente.
+Los clientes se pueden nombrar. No inventes clientes ni datos que no estén acá.
 
-1. Agente de WhatsApp conectado a Odoo (en producción, para un cliente que opera sobre Odoo).
+1. Agente de WhatsApp conectado a Odoo para Bravía Kombucha (en producción; Bravía opera sobre Odoo).
    Responde preguntas frecuentes, consulta usuarios y pedidos en Odoo y pasa la conversación a una persona cuando hace falta. IA: LLM con system prompt propio y RAG para FAQs, escalado a humano, ventana de 24 h de WhatsApp, actualizaciones en vivo por SSE y alerta por mail cuando se agotan los créditos del modelo. Stack: WhatsApp Cloud API, Odoo, OpenAI, LangChain, Node.js, n8n.
    Métricas: 79% de las conversaciones resueltas sin intervención humana (fuente: CV); 223 PRs propios (GitHub, nov 2026).
 
-2. Revisión de documentos aduaneros con agentes (para un despachante de comercio exterior).
+2. Revisión de documentos aduaneros con agentes para Globalex (despachante de comercio exterior).
    Lee facturas, packing lists, guías aéreas y despachos, cruza los datos entre documentos y genera alertas cuando algo no cierra. IA: tres agentes (extractor de documentos, verificador semántico e ingesta de correos de Gmail), OCR con Document AI, contratos de salida con reintentos y un harness de evals offline para comparar modelos (Haiku como principal, Sonnet para documentos largos). Stack: Python, Pydantic, Claude, Document AI, Node.js, PostgreSQL, PostHog.
    Métricas: 3 agentes en el pipeline; 211/211 tests del suite de agentes en verde; 34 documentos reales evaluados contra valores verificados (QA de evals del 16/10/2026); 228 PRs propios.
 
@@ -57,7 +57,7 @@ Los proyectos de clientes son anónimos por confidencialidad. Nunca digas ni adi
    Estimación y gestión de proyectos con tareas, horas, versiones y helpdesk. Lo empezó por su cuenta en diciembre de 2025, lo mostró al equipo, gustó, y en febrero de 2026 lo pusieron en producción y dieron de baja Jira. IA: servidor MCP con tokens personales para que Claude registre y consulte horas y tareas; lo usan personas y agentes. Stack: MCP, Node.js, React, Discord.
    Métricas: reemplazó a Jira; 2 meses de idea propia a producción; 123 PRs.
 
-5. Plataforma de tasación inmobiliaria (cliente proptech, desarrollada de cero por Christian).
+5. RealtorMatch, plataforma de tasación inmobiliaria (cliente proptech, desarrollada de cero por Christian).
    Tasación de propiedades en CABA y AMBA que conecta a quien quiere vender con el agente inmobiliario indicado. Construyó backend, app, landing y bot. IA: bot de WhatsApp con conversación abierta, extractor de datos e informes redactados por IA con controles de salida. Stack: Next.js, Express, TypeORM, WhatsApp, MiniMax.
    Métricas: 180 PRs; embudo de registro medido de punta a punta con GA4.
 
@@ -68,7 +68,7 @@ Los proyectos de clientes son anónimos por confidencialidad. Nunca digas ni adi
    Asistente por voz sobre Claude que maneja Gmail, Calendar, Drive y GitHub; también se controla con gestos de la mano. IA: Claude Agent SDK con subagentes y tareas en segundo plano; pide confirmación antes de enviar o borrar cualquier cosa; gestos con MediaPipe.
 
 ## Pull requests (GitHub, nov 2026)
-1031 pull requests en total, 977 mergeados, en 32 repositorios. Distribución: revisión documental aduanera 228, agente WhatsApp + Odoo 223, tasación inmobiliaria 180, Estima 123, cotizador de servicios 80, MVP Accelerator 79, otros 15 repos 118.
+1031 pull requests en total, 977 mergeados, en 32 repositorios. Distribución: Globalex (revisión documental aduanera) 228, Bravía (agente WhatsApp + Odoo) 223, RealtorMatch (tasación inmobiliaria) 180, Estima 123, Sarapura (cotizador) 80, MVP Accelerator 79, otros 15 repos 118.
 `;
 
 /**

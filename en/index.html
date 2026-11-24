@@ -286,6 +286,9 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 500; line-height: 1.08;
 .metric .k { font-size: .82rem; color: var(--muted); line-height: 1.35; }
 .tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: auto; }
 .tags span { font-family: var(--f-mono); font-size: .68rem; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; padding: .2rem .45rem; }
+.demo { margin: 0; display: grid; gap: .45rem; }
+.demo video { display: block; width: 100%; height: auto; aspect-ratio: 1280 / 558; border-radius: 12px; border: 1px solid var(--line); background: var(--ink); box-shadow: var(--card-shadow); }
+.demo figcaption { font-family: var(--f-mono); font-size: .66rem; color: var(--muted); }
 .src { font-family: var(--f-mono); font-size: .66rem; color: var(--muted); opacity: .85; }
 
 .flow { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; counter-reset: f; }
@@ -566,16 +569,16 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
         <div class="layer-id"><span class="n">03</span><span class="label">attention layer</span></div>
         <div>
           <h2 id="h-proj">Projects I focused on</h2>
-          <p>Client projects are unnamed for confidentiality. Every metric says where it comes from.</p>
+          <p>Projects for Rocking Product clients and my own projects. Every metric says where it comes from.</p>
         </div>
       </div>
       <div class="projects">
 
         <article class="proj feature" id="p-whatsapp" style="--act-c: var(--act-hi)">
           <div style="display:flex;flex-direction:column;gap:.9rem;min-width:0">
-            <div class="proj-top"><span class="label">conversational agent · in production</span></div>
+            <div class="proj-top"><span class="label">Bravía Kombucha · in production</span></div>
             <h3>WhatsApp agent connected to Odoo</h3>
-            <p>WhatsApp customer service for a client that runs on Odoo. The agent answers FAQs, looks up users and orders in Odoo, and hands the conversation to a person when needed.</p>
+            <p>WhatsApp customer service for Bravía Kombucha, which runs on Odoo. The agent answers FAQs, looks up users and orders in Odoo, and hands the conversation to a person when needed.</p>
             <p class="ai"><span class="label">where the AI is</span>LLM with its own system prompt and RAG for FAQs, human escalation, WhatsApp's 24 h window, live updates over SSE, and an email alert when model credits run out.</p>
             <div class="tags"><span>WhatsApp Cloud API</span><span>Odoo</span><span>OpenAI</span><span>LangChain</span><span>Node.js</span><span>n8n</span></div>
           </div>
@@ -585,14 +588,18 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
               <div class="metric" style="--act-c: var(--act-mid)"><div class="v">223</div><div class="k">of my PRs across backend and frontend</div></div>
             </div>
             <span class="src">source: CV (79%) · GitHub, Nov 2026 (PRs)</span>
+            <figure class="demo">
+              <video muted loop playsinline preload="none" poster="../assets/video/bravia-whatsapp.jpg" aria-label="Demo of Bravía's agent: a customer writes on WhatsApp, the bot answers and hands off to a person when asked"><source src="../assets/video/bravia-whatsapp.webm" type="video/webm"><source src="../assets/video/bravia-whatsapp.mp4" type="video/mp4"></video>
+              <figcaption>Real demo: WhatsApp on the left, Bravía's panel on the right. Sped up 2×.</figcaption>
+            </figure>
           </div>
         </article>
 
         <article class="proj feature" id="p-docs" style="--act-c: var(--act-hi)">
           <div style="display:flex;flex-direction:column;gap:.9rem;min-width:0">
-            <div class="proj-top"><span class="label">multi-agent · foreign trade</span></div>
+            <div class="proj-top"><span class="label">Globalex · foreign trade</span></div>
             <h3>Customs document review with agents</h3>
-            <p>A platform for a customs broker. It reads invoices, packing lists, air waybills and customs declarations, cross-checks data between documents and raises alerts when something doesn't match.</p>
+            <p>A platform for Globalex, a customs broker. It reads invoices, packing lists, air waybills and customs declarations, cross-checks data between documents and raises alerts when something doesn't match.</p>
             <p class="ai"><span class="label">where the AI is</span>Three agents: document extractor, semantic checker and Gmail intake. OCR with Document AI, output contracts with retries, and an offline eval harness to compare models (Haiku as primary, Sonnet for long documents).</p>
             <div class="tags"><span>Python</span><span>Pydantic</span><span>Claude</span><span>Document AI</span><span>Node.js</span><span>PostgreSQL</span><span>PostHog</span></div>
           </div>
@@ -641,8 +648,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
         </article>
 
         <article class="proj" id="p-realtor" style="--act-c: var(--act-mid)">
-          <div class="proj-top"><span class="label">proptech client · built from scratch</span></div>
-          <h3>Real estate appraisal platform</h3>
+          <div class="proj-top"><span class="label">proptech · built from scratch</span></div>
+          <h3>RealtorMatch</h3>
           <p>Property appraisals in Buenos Aires that match sellers with the right real estate agent. I built it from scratch: backend, app, landing page and bot.</p>
           <p class="ai"><span class="label">where the AI is</span>Open-conversation WhatsApp bot, a data extractor, and AI-written reports with output guardrails.</p>
           <div class="metrics">
@@ -762,8 +769,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
 
   /* ---------- salida: distribución de PRs (GitHub, nov 2026) ---------- */
   const PRS = [
-    ["Customs document review", 228], ["WhatsApp + Odoo agent", 223], ["Real estate appraisals", 180],
-    ["Estima", 123], ["Service quoting engine", 80], ["MVP Accelerator", 79], ["15 other repos", 118]
+    ["Globalex · customs review", 228], ["Bravía · WhatsApp + Odoo agent", 223], ["RealtorMatch · appraisals", 180],
+    ["Estima", 123], ["Sarapura · quoting engine", 80], ["MVP Accelerator", 79], ["15 other repos", 118]
   ];
   const total = PRS.reduce((s, [, v]) => s + v, 0);
   const max = PRS[0][1];
@@ -820,6 +827,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
       count.observe(el);
     });
   }
+  // videos de demo: se cargan y reproducen solo en pantalla; con movimiento reducido quedan en pausa con controles
+  document.querySelectorAll(".demo video").forEach(v => {
+    if (calm || !("IntersectionObserver" in window)) { v.controls = true; return; }
+    new IntersectionObserver(([e]) => { if (e.isIntersecting) v.play().catch(() => { v.controls = true; }); else v.pause(); }, { threshold: .35 }).observe(v);
+  });
   document.querySelectorAll(".proj").forEach(card => card.addEventListener("pointermove", e => {
     const r = card.getBoundingClientRect();
     card.style.setProperty("--mx", (e.clientX - r.left) + "px"); card.style.setProperty("--my", (e.clientY - r.top) + "px");
@@ -852,9 +864,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
     { id: "mem", l: 2, t: "Memory", d: "Persistent memory that stays up to date, in AlterNata.", go: "#p-alternata" },
     { id: "mcp", l: 2, t: "MCP · Claude Code", d: "MCP server, custom skills and Claude Agent SDK.", go: "#habilidades" },
     // capa 3: proyectos
-    { id: "pw", l: 3, t: "WhatsApp + Odoo agent", d: "WhatsApp customer service connected to Odoo, with RAG and human escalation.", go: "#p-whatsapp" },
-    { id: "pd", l: 3, t: "Customs review", d: "Three agents that extract and cross-check foreign-trade documents.", go: "#p-docs" },
-    { id: "pr", l: 3, t: "Real estate appraisals", d: "Built from scratch: WhatsApp bot and AI-written reports.", go: "#p-realtor" },
+    { id: "pw", l: 3, t: "Bravía · WhatsApp + Odoo", d: "Bravía Kombucha's agent: WhatsApp customer service connected to Odoo, with RAG and human escalation.", go: "#p-whatsapp" },
+    { id: "pd", l: 3, t: "Globalex · customs", d: "Document review for Globalex: three agents that extract and cross-check foreign-trade documents.", go: "#p-docs" },
+    { id: "pr", l: 3, t: "RealtorMatch", d: "Real estate appraisals built from scratch: WhatsApp bot and AI-written reports.", go: "#p-realtor" },
     { id: "pe", l: 3, t: "Estima", d: "My own project: idea to production in 2 months, with an MCP server.", go: "#p-estima" },
     { id: "pa", l: 3, t: "MVP Accelerator", d: "Base framework with an LLM model factory.", go: "#p-accel" },
     { id: "palt", l: 3, t: "AlterNata", d: "My second brain on Discord: answers for me and asks for approval before acting.", go: "#p-alternata" },
