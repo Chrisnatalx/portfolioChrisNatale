@@ -52,5 +52,5 @@ Para probar el chat en local hace falta `vercel dev` (Vercel CLI) con `AI_GATEWA
 3. **Clientes anónimos.** No escribir nombres de clientes en el sitio, el bot ni las imágenes. Se describen por rubro (p. ej. "Plataforma de tasación inmobiliaria").
 4. **Cargo:** "AI Engineer" en todo el sitio.
 5. **Temas:** los colores son tokens en `:root` (oscuro por defecto) y se redefinen para claro en `@media (prefers-color-scheme: light)` y en `:root[data-theme="light"]`. Cambiar ambos bloques juntos.
-6. **Respetar `prefers-reduced-motion`:** toda animación nueva necesita su versión sin movimiento.
+6. **Respetar `prefers-reduced-motion`:** toda animación nueva necesita su versión sin movimiento. El motion actual (sin librerías): cambio de tema con View Transitions, barra de progreso `.fp`, entrada escalonada de bloques (`.js-rv` / `.rv`), cifras de `.metric .v` que cuentan desde 0, luz que sigue al cursor en `.proj` (`--mx`/`--my`) y puntos de "pensando" en el chat. No se usa three.js a propósito, para cuidar el peso.
 7. **Secretos:** nunca en el repo ni en el HTML; solo como variables de entorno en Vercel (`.env*` está en `.gitignore`).
