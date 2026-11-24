@@ -287,7 +287,21 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 500; line-height: 1.08;
 .tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: auto; }
 .tags span { font-family: var(--f-mono); font-size: .68rem; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; padding: .2rem .45rem; }
 .demo { margin: 0; display: grid; gap: .45rem; }
-.demo video { display: block; width: 100%; height: auto; aspect-ratio: 1280 / 558; border-radius: 12px; border: 1px solid var(--line); background: var(--ink); box-shadow: var(--card-shadow); }
+.demo video { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); background: var(--ink); box-shadow: var(--card-shadow); }
+.demo { position: relative; }
+.zoom { position: absolute; top: .5rem; right: .5rem; z-index: 1; font-family: var(--f-mono); font-size: .66rem; color: #fff; background: rgba(18,14,29,.72);
+  border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: .3rem .6rem; cursor: zoom-in; }
+.zoom:hover { background: rgba(18,14,29,.9); }
+.shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: .5rem; }
+.shots button { padding: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--ink); cursor: zoom-in; aspect-ratio: 16 / 10; }
+.shots img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform .35s; }
+.shots button:hover img { transform: scale(1.04); }
+.lb { width: min(1400px, 96vw); max-height: 94dvh; padding: 0; border: 1px solid var(--line); border-radius: 14px; background: var(--ink-2); color: var(--fg); overflow: hidden; }
+.lb::backdrop { background: rgba(10,8,18,.82); backdrop-filter: blur(4px); }
+.lb figure { margin: 0; display: grid; }
+.lb img, .lb video { display: block; width: 100%; max-height: calc(94dvh - 3rem); object-fit: contain; background: #000; }
+.lb figcaption { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: .6rem .9rem; font-size: .85rem; color: var(--muted); }
+.lb-close { flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; font-size: 1rem; }
 .demo figcaption { font-family: var(--f-mono); font-size: .66rem; color: var(--muted); }
 .src { font-family: var(--f-mono); font-size: .66rem; color: var(--muted); opacity: .85; }
 
@@ -589,7 +603,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
             </div>
             <span class="src">source: CV (79%) · GitHub, Nov 2026 (PRs)</span>
             <figure class="demo">
-              <video muted loop playsinline preload="none" poster="../assets/video/bravia-whatsapp.jpg" aria-label="Demo of Bravía's agent: a customer writes on WhatsApp, the bot answers and hands off to a person when asked"><source src="../assets/video/bravia-whatsapp.webm" type="video/webm"><source src="../assets/video/bravia-whatsapp.mp4" type="video/mp4"></video>
+              <button class="zoom" type="button">enlarge ⤢</button>
+              <video width="1280" height="558" muted loop playsinline preload="none" poster="../assets/video/bravia-whatsapp.jpg" aria-label="Demo of Bravía's agent: a customer writes on WhatsApp, the bot answers and hands off to a person when asked"><source src="../assets/video/bravia-whatsapp.webm" type="video/webm"><source src="../assets/video/bravia-whatsapp.mp4" type="video/mp4"></video>
               <figcaption>Real demo: WhatsApp on the left, Bravía's panel on the right. Sped up 2×.</figcaption>
             </figure>
           </div>
@@ -611,6 +626,12 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
               <div class="metric" style="--act-c: var(--act-mid)"><div class="v">228</div><div class="k">of my PRs across front, back and agents</div></div>
             </div>
             <span class="src">source: eval QA from 2026-10-16 and GitHub, Nov 2026</span>
+            <figure class="demo">
+              <button class="zoom" type="button">enlarge ⤢</button>
+              <video width="1280" height="800" muted loop playsinline preload="none" poster="../assets/media/globalex-demo.jpg" aria-label="Globalex demo: operations list, cross-document alerts and review of extracted fields with their confidence"><source src="../assets/media/globalex-demo.webm" type="video/webm"><source src="../assets/media/globalex-demo.mp4" type="video/mp4"></video>
+              <figcaption>Stage demo with client data pixelated.</figcaption>
+            </figure>
+            <div class="shots"><button type="button" data-full="../assets/media/globalex-1-operaciones.webp"><img src="../assets/media/globalex-1-operaciones-sm.webp" alt="Globalex operations list with validation status and alerts" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/globalex-2-alertas.webp"><img src="../assets/media/globalex-2-alertas-sm.webp" alt="Cross-check alerts: the included adjustment doesn't match the expected value" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/globalex-3-extraccion.webp"><img src="../assets/media/globalex-3-extraccion-sm.webp" alt="Invoice review: AI-extracted fields with confidence percentage" loading="lazy" width="480" height="300"></button></div>
           </div>
         </article>
 
@@ -644,6 +665,12 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
             <div class="metric" style="--act-c: var(--act-lo)"><div class="v">123</div><div class="k">PRs across frontend and backend</div></div>
           </div>
           <div class="tags"><span>MCP</span><span>Node.js</span><span>React</span><span>Discord</span></div>
+          <figure class="demo">
+              <button class="zoom" type="button">enlarge ⤢</button>
+              <video width="1280" height="800" muted loop playsinline preload="none" poster="../assets/media/estima-demo.jpg" aria-label="Estima demo: estimated vs executed hours dashboard, human and agent board, and MCP access"><source src="../assets/media/estima-demo.webm" type="video/webm"><source src="../assets/media/estima-demo.mp4" type="video/mp4"></video>
+              <figcaption>Estima in production; team members pixelated.</figcaption>
+            </figure>
+            <div class="shots"><button type="button" data-full="../assets/media/estima-1-dashboard.webp"><img src="../assets/media/estima-1-dashboard-sm.webp" alt="Project dashboard: estimated vs executed hours and agent hours" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/estima-2-kanban.webp"><img src="../assets/media/estima-2-kanban-sm.webp" alt="Sprint board with human and agent view" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/estima-3-tarea.webp"><img src="../assets/media/estima-3-tarea-sm.webp" alt="Task detail with estimated hours for human and agent" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/estima-4-mcp.webp"><img src="../assets/media/estima-4-mcp-sm.webp" alt="Personal token generator for the MCP server" loading="lazy" width="480" height="300"></button></div>
           <span class="src">source: Christian · GitHub, Nov 2026</span>
         </article>
 
@@ -657,10 +684,32 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
             <div class="metric" style="--act-c: var(--act-lo)"><div class="v">GA4</div><div class="k">signup funnel measured end to end</div></div>
           </div>
           <div class="tags"><span>Next.js</span><span>Express</span><span>TypeORM</span><span>WhatsApp</span><span>MiniMax</span></div>
+          <figure class="demo">
+              <button class="zoom" type="button">enlarge ⤢</button>
+              <video width="1280" height="800" muted loop playsinline preload="none" poster="../assets/media/realtormatch-app.jpg" aria-label="RealtorMatch demo: appraisal detail, comparables breakdown and AI-written report"><source src="../assets/media/realtormatch-app.webm" type="video/webm"><source src="../assets/media/realtormatch-app.mp4" type="video/mp4"></video>
+              <figcaption>Real demo; the property address is pixelated.</figcaption>
+            </figure>
+            <div class="shots"><button type="button" data-full="../assets/media/realtormatch-1-landing.webp"><img src="../assets/media/realtormatch-1-landing-sm.webp" alt="RealtorMatch landing: matching with agents" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/realtormatch-2-informe.webp"><img src="../assets/media/realtormatch-2-informe-sm.webp" alt="Cover of the generated appraisal report" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/realtormatch-3-comparables.webp"><img src="../assets/media/realtormatch-3-comparables-sm.webp" alt="Market comparables sorted by value per square meter" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/realtormatch-4-valuacion.webp"><img src="../assets/media/realtormatch-4-valuacion-sm.webp" alt="Valuation and suggested price in the report" loading="lazy" width="480" height="300"></button></div>
           <span class="src">source: GitHub, Nov 2026</span>
         </article>
 
 
+
+        <article class="proj" id="p-sarapura" style="--act-c: var(--act-mid)">
+          <div class="proj-top"><span class="label">Sarapura · event quoting</span></div>
+          <h3>Sarapura quoting engine</h3>
+          <p>Sarapura provides lighting, sound and effects for events. The team builds proposals by venue, dance floor and pack, with per-item margin and rounded prices, and the client gets a page where they add extras and accept the proposal.</p>
+          <div class="metrics">
+            <div class="metric"><div class="v">80</div><div class="k">PRs across frontend and backend</div></div>
+          </div>
+          <figure class="demo">
+              <button class="zoom" type="button">enlarge ⤢</button>
+              <video width="1280" height="800" muted loop playsinline preload="none" poster="../assets/media/sarapura-demo.jpg" aria-label="Sarapura demo: building a proposal live and the page the client receives"><source src="../assets/media/sarapura-demo.webm" type="video/webm"><source src="../assets/media/sarapura-demo.mp4" type="video/mp4"></video>
+              <figcaption>Stage demo; client names and commissions left out.</figcaption>
+            </figure>
+            <div class="shots"><button type="button" data-full="../assets/media/sarapura-1-armado.webp"><img src="../assets/media/sarapura-1-armado-sm.webp" alt="Building a proposal with per-item margin and live total" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/sarapura-2-propuesta-cliente.webp"><img src="../assets/media/sarapura-2-propuesta-cliente-sm.webp" alt="Cover of the proposal the client receives" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/sarapura-3-adicionales.webp"><img src="../assets/media/sarapura-3-adicionales-sm.webp" alt="Add-ons the client can include in their event" loading="lazy" width="480" height="300"></button></div>
+          <span class="src">source: GitHub, Nov 2026</span>
+        </article>
 
         <article class="proj" id="p-accel" style="--act-c: var(--act-lo)">
           <div class="proj-top"><span class="label">platform · base of every product</span></div>
@@ -719,6 +768,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
     <span class="mono">data: CV and GitHub · Nov 2026</span>
   </div>
 </footer>
+
+<dialog class="lb" id="lb" aria-label="Enlarged view">
+  <figure><div id="lbMedia"></div><figcaption><span id="lbCap"></span><button class="lb-close" id="lbClose" type="button" aria-label="Close">✕</button></figcaption></figure>
+</dialog>
 
 <button class="an-fab" id="anFab" type="button" aria-expanded="false" aria-controls="anPanel">
   <span class="an-orb" aria-hidden="true"></span><span class="an-label">AlterNata</span>
@@ -832,6 +885,20 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
     if (calm || !("IntersectionObserver" in window)) { v.controls = true; return; }
     new IntersectionObserver(([e]) => { if (e.isIntersecting) v.play().catch(() => { v.controls = true; }); else v.pause(); }, { threshold: .35 }).observe(v);
   });
+  /* ---------- lightbox: capturas y videos en grande ---------- */
+  const lb = document.getElementById("lb"), lbMedia = document.getElementById("lbMedia"), lbCap = document.getElementById("lbCap");
+  function openLb(node, cap) { lbMedia.replaceChildren(node); lbCap.textContent = cap || ""; lb.showModal(); }
+  document.getElementById("lbClose").addEventListener("click", () => lb.close());
+  lb.addEventListener("click", e => { if (e.target === lb) lb.close(); });
+  lb.addEventListener("close", () => lbMedia.replaceChildren());
+  document.querySelectorAll(".shots button").forEach(b => b.addEventListener("click", () => {
+    const im = new Image(); im.src = b.dataset.full; im.alt = b.querySelector("img").alt; openLb(im, im.alt);
+  }));
+  document.querySelectorAll(".demo .zoom").forEach(b => b.addEventListener("click", () => {
+    const src = b.parentElement.querySelector("video"), v = src.cloneNode(true);
+    v.removeAttribute("preload"); v.controls = true; v.autoplay = true; v.muted = true; v.currentTime = src.currentTime;
+    openLb(v, b.parentElement.querySelector("figcaption")?.textContent);
+  }));
   document.querySelectorAll(".proj").forEach(card => card.addEventListener("pointermove", e => {
     const r = card.getBoundingClientRect();
     card.style.setProperty("--mx", (e.clientX - r.left) + "px"); card.style.setProperty("--my", (e.clientY - r.top) + "px");
@@ -868,6 +935,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
     { id: "pd", l: 3, t: "Globalex · customs", d: "Document review for Globalex: three agents that extract and cross-check foreign-trade documents.", go: "#p-docs" },
     { id: "pr", l: 3, t: "RealtorMatch", d: "Real estate appraisals built from scratch: WhatsApp bot and AI-written reports.", go: "#p-realtor" },
     { id: "pe", l: 3, t: "Estima", d: "My own project: idea to production in 2 months, with an MCP server.", go: "#p-estima" },
+    { id: "ps", l: 3, t: "Sarapura", d: "Event quoting engine: proposals with per-item margin and a page for the client.", go: "#p-sarapura" },
     { id: "pa", l: 3, t: "MVP Accelerator", d: "Base framework with an LLM model factory.", go: "#p-accel" },
     { id: "palt", l: 3, t: "AlterNata", d: "My second brain on Discord: answers for me and asks for approval before acting.", go: "#p-alternata" },
     { id: "pal", l: 3, t: "Alter", d: "Voice assistant on Claude Agent SDK. Open source.", go: "#p-alter" },
@@ -886,8 +954,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
     ["llm", "pw"], ["llm", "pd"], ["llm", "pr"], ["llm", "pa"], ["llm", "pal"],
     ["agt", "pw"], ["agt", "pd"], ["agt", "pr"], ["agt", "pal"], ["rag", "pw"], ["auto", "pw"],
     ["ext", "pd"], ["ext", "pr"], ["eval", "pd"], ["mcp", "pe"], ["mcp", "pal"], ["llm", "palt"], ["agt", "palt"], ["mem", "palt"], ["node", "mem"], ["pg", "mem"],
-    ["pw", "o79"], ["pd", "o211"], ["pw", "o1031"], ["pd", "o1031"], ["pr", "o1031"], ["pe", "o1031"], ["pa", "o1031"],
-    ["pr", "o34"], ["pe", "o34"], ["pa", "o34"], ["pe", "ojira"]
+    ["pw", "o79"], ["pd", "o211"], ["pw", "o1031"], ["pd", "o1031"], ["pr", "o1031"], ["ps", "o1031"], ["pe", "o1031"], ["pa", "o1031"],
+    ["ts", "ps"], ["react", "ps"], ["node", "ps"], ["pr", "o34"], ["pe", "o34"], ["pa", "o34"], ["pe", "ojira"]
   ];
   const ASK = {
     agentes: ["agt", "llm"], impacto: ["pw", "pd"], stack: ["ts", "node", "react", "py"], origen: ["y21", "free", "fract"]

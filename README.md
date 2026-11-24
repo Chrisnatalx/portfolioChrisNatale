@@ -21,6 +21,7 @@ Sitio personal con forma de red neuronal: cada nodo del hero es un dato real de 
 | `build.py` | Lista de pares `(es, en)` que traduce `index.html` → `en/index.html`. Falla si un texto en español ya no matchea. |
 | `api/chat.js` | `POST /api/chat`: endpoint de AlterNata. Valida historial, rate limit por IP, llama al gateway y devuelve respuesta + nodos a iluminar. |
 | `api/_knowledge.js` | Base de conocimiento del bot (`KNOWLEDGE`) e ids de nodos de la red (`NODES`). El `_` evita que Vercel lo publique como función. |
+| `assets/media/`, `assets/video/` | Capturas y videos de demo por proyecto (webp + miniatura `-sm`, webm + mp4 + póster). Todo pasa por redacción con OCR antes de publicarse: datos de terceros pixelados. |
 | `assets/` | Foto, CV en PDF (`christian-natale-cv.pdf`) e imágenes Open Graph (`og.png`, `og-en.png`). |
 | `og/og.html`, `og/render.cjs` | Plantilla y script (Playwright) que generan las imágenes OG. No se despliegan. |
 | `vercel.json` | Sitio estático desde la raíz, sin build; `api/chat.js` con `maxDuration` 30 s. |

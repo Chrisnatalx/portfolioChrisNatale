@@ -61,10 +61,13 @@ Los clientes se pueden nombrar. No inventes clientes ni datos que no estén acá
    Tasación de propiedades en CABA y AMBA que conecta a quien quiere vender con el agente inmobiliario indicado. Construyó backend, app, landing y bot. IA: bot de WhatsApp con conversación abierta, extractor de datos e informes redactados por IA con controles de salida. Stack: Next.js, Express, TypeORM, WhatsApp, MiniMax.
    Métricas: 180 PRs; embudo de registro medido de punta a punta con GA4.
 
-6. MVP Accelerator (plataforma de Rocking Product, base de todos sus productos).
+6. Cotizador de Sarapura (cliente; Sarapura hace iluminación, sonido y efectos para eventos).
+   El equipo arma propuestas por salón, pista y pack, con margen por ítem y precios redondeados; el cliente recibe una página donde suma adicionales y acepta la propuesta. Métricas: 80 PRs entre frontend y backend.
+
+7. MVP Accelerator (plataforma de Rocking Product, base de todos sus productos).
    Framework con autenticación, multi-tenancy, almacenamiento en S3 y una fábrica de modelos LLM. Stack: TypeScript, LangChain, React, PostgreSQL. Métricas: 79 PRs.
 
-7. Alter (proyecto personal, open source: github.com/Chrisnatalx/Alter).
+8. Alter (proyecto personal, open source: github.com/Chrisnatalx/Alter).
    Asistente por voz sobre Claude que maneja Gmail, Calendar, Drive y GitHub; también se controla con gestos de la mano. IA: Claude Agent SDK con subagentes y tareas en segundo plano; pide confirmación antes de enviar o borrar cualquier cosa; gestos con MediaPipe.
 
 ## Pull requests (GitHub, nov 2026)
