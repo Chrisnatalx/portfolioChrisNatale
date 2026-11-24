@@ -106,14 +106,15 @@ function cleanMessages(raw) {
 /**
  * Errores del gateway que significan "no hay saldo disponible" (formato: error.type / error.message).
  * Incluye customer_verification_required: sin tarjeta cargada, los créditos gratis no se activan.
+ * Incluye no_providers_available con "Free tier users do not have access": el plan gratis no cubre el modelo.
  * Ojo: no matchear "credit" a secas, porque también aparece en errores de credenciales.
  */
 function isOutOfCredits(err) {
   if (err?.status === 402) return true;
   const type = err?.error?.error?.type || "";
-  if (/customer_verification_required|insufficient_funds|insufficient_balance|budget_exceeded/i.test(type)) return true;
+  if (/customer_verification_required|insufficient_funds|insufficient_balance|budget_exceeded|no_providers_available/i.test(type)) return true;
   const msg = err?.error?.error?.message || "";
-  return /insufficient (funds|balance|credits)|out of credits|no credits|credit balance|budget (exceeded|limit)/i.test(msg);
+  return /insufficient (funds|balance|credits)|out of credits|no credits|credit balance|budget (exceeded|limit)|free tier users do not have access|add ai gateway credits/i.test(msg);
 }
 
 const json = (body, status = 200) =>
