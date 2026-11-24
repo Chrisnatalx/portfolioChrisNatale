@@ -232,6 +232,11 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 500; line-height: 1.08;
 .contact dd { margin: .15rem 0 0; display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; overflow-wrap: anywhere; }
 .copy { font-family: var(--f-mono); font-size: .68rem; background: none; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; padding: .2rem .45rem; cursor: pointer; }
 .copy:hover { color: var(--fg); border-color: var(--act-mid); }
+.cv-btn { display: flex; justify-content: space-between; align-items: center; gap: .8rem; margin-bottom: 1.1rem; padding: .8rem 1rem; border-radius: 10px; text-decoration: none; font-weight: 600;
+  color: var(--ink); background: linear-gradient(90deg, var(--act-lo), var(--act-mid) 60%, var(--act-hi)); }
+.cv-btn .mono { font-family: var(--f-mono); font-size: .68rem; font-weight: 400; opacity: .85; }
+.cv-btn:hover { filter: brightness(1.08); }
+@media (max-width: 420px) { .lang.cv { display: none; } }
 footer { border-top: 1px solid var(--line); padding-block: 1.6rem 2.4rem; color: var(--muted); }
 footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 
@@ -259,6 +264,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
       <a href="#proyectos" data-sec="proyectos">03 atención</a>
       <a href="#salida" data-sec="salida">04 salida</a>
     </nav>
+    <a class="lang cv" href="assets/christian-natale-cv.pdf" download="Christian Natale - CV.pdf" target="_blank" rel="noopener" aria-label="Descargar CV en PDF">CV ↓</a>
     <a class="lang" href="en/" hreflang="en" lang="en">EN</a>
     <button class="theme-btn" id="themeBtn" type="button" aria-label="Cambiar tema claro u oscuro">◐</button>
   </div>
@@ -516,7 +522,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
 
         <article class="proj feature" id="p-alternata" style="--act-c: var(--act-hi)">
           <div style="display:flex;flex-direction:column;gap:.9rem;min-width:0">
-            <div class="proj-top"><span class="label">proyecto propio · second brain</span><a class="mono" href="https://github.com/Chrisnatalx/Second-Brain" target="_blank" rel="noopener">ver diseño ↗</a></div>
+            <div class="proj-top"><span class="label">proyecto propio · second brain</span></div>
             <h3>AlterNata</h3>
             <p>Mi second brain en Discord. Cuando me mencionan, responde con mi voz y una memoria que se mantiene actualizada. Si alguien pide un cambio en un proyecto, lo implementa, pero push, merge y deploy esperan mi aprobación por mensaje.</p>
             <p class="ai"><span class="label">dónde está la IA</span>Una sesión de Claude Code conectada a Discord con Channels. Funciona como despachador: clasifica cada pedido y delega el trabajo pesado a subagentes en worktrees. Solo ve la carpeta de proyectos de mi PC, la memoria es markdown versionado en git y trata cualquier instrucción dentro de un mensaje, PR o archivo como dato, no como orden.</p>
@@ -529,7 +535,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
               <li><span class="label">acción</span>Si piden un cambio, un subagente lo implementa en un worktree</li>
               <li><span class="label">control</span>Push, merge y deploy esperan mi OK por DM</li>
             </ol>
-            <span class="src">fuente: Christian · documento de diseño del repo</span>
+            <span class="src">fuente: Christian</span>
           </div>
         </article>
 
@@ -600,6 +606,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
         <div class="softmax" id="softmax" aria-label="Distribución de pull requests por producto"></div>
         <aside class="contact">
           <h3>Hablemos</h3>
+          <a class="cv-btn" href="assets/christian-natale-cv.pdf" download="Christian Natale - CV.pdf" target="_blank" rel="noopener">Descargar CV <span class="mono">PDF · 2 págs</span></a>
           <dl>
             <div><dt class="label">Email</dt><dd><a href="mailto:natale.christian.a@gmail.com">natale.christian.a@gmail.com</a><button class="copy" type="button" data-copy="natale.christian.a@gmail.com">copiar</button></dd></div>
             <div><dt class="label">LinkedIn</dt><dd><a href="https://www.linkedin.com/in/christian-natale-/" target="_blank" rel="noopener">linkedin.com/in/christian-natale-</a></dd></div>
