@@ -70,6 +70,14 @@ const OUTPUT_SCHEMA = {
  * el cliente se arma por request. El token OIDC tiene prioridad (no hay secreto que rotar);
  * AI_GATEWAY_API_KEY queda como respaldo para correr fuera de Vercel.
  */
+/** De dónde sale la credencial (solo el nombre, nunca el valor): sirve para diagnosticar 401. */
+function credentialSource(request) {
+  if (request.headers.get("x-vercel-oidc-token")) return "oidc-header";
+  if (process.env.VERCEL_OIDC_TOKEN) return "oidc-env";
+  if (process.env.AI_GATEWAY_API_KEY) return "api-key";
+  return "missing";
+}
+
 function gatewayClient(request) {
   return new Anthropic({
     apiKey: request.headers.get("x-vercel-oidc-token") || process.env.VERCEL_OIDC_TOKEN || process.env.AI_GATEWAY_API_KEY || "missing",
@@ -150,7 +158,7 @@ export async function POST(request) {
     return json({ answer: String(parsed.answer || t.error), nodes });
   } catch (err) {
     if (isOutOfCredits(err)) return json({ answer: t.credits, nodes: [], outOfCredits: true });
-    console.error("chat error", err?.status, err?.error?.error?.type || err?.name, err?.message);
+    console.error("chat error", err?.status, err?.error?.error?.type || err?.name, "cred:" + credentialSource(request), "model:" + MODEL, err?.message);
     return json({ answer: t.error, nodes: [] }, 502);
   }
 }
