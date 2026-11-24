@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<!-- Plantilla de la imagen para compartir (1200×630). Se renderiza a assets/og.png y assets/og-en.png con og/render.cjs. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;700&family=Martian+Mono:wght@400&family=Atkinson+Hyperlegible+Next:wght@400;600&display=swap">
+<style>
+  :root { --ink: #120e1d; --line: #2f2748; --fg: #ece8f6; --muted: #a49cbd; --lo: #5b3fd6; --mid: #e0457b; --hi: #ffb347; }
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: var(--ink); color: var(--fg); }
+  body { position: relative; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif;
+    background: radial-gradient(90% 120% at 85% 10%, #241a45 0%, var(--ink) 60%); }
+  canvas { position: absolute; right: 0; top: 0; }
+  .copy { position: absolute; left: 72px; top: 70px; width: 600px; display: flex; flex-direction: column; gap: 22px; }
+  .kicker { font-family: "Martian Mono", monospace; font-size: 17px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  h1 { margin: 0; font-family: "Unbounded", sans-serif; font-weight: 300; font-size: 76px; line-height: 1.02; letter-spacing: -.02em; }
+  h1 b { display: block; font-weight: 700;
+    background: linear-gradient(90deg, var(--lo), var(--mid) 55%, var(--hi)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { font-size: 25px; line-height: 1.4; color: var(--muted); max-width: 30ch; }
+  .sub strong { color: var(--fg); font-weight: 600; }
+  .stats { position: absolute; left: 72px; bottom: 58px; display: flex; gap: 40px; }
+  .stat { border-top: 3px solid var(--hi); padding-top: 10px; }
+  .stat:nth-child(2) { border-color: var(--mid); } .stat:nth-child(3) { border-color: var(--lo); }
+  .stat .v { font-family: "Unbounded", sans-serif; font-weight: 700; font-size: 36px; }
+  .stat .k { font-size: 17px; color: var(--muted); }
+</style>
+</head>
+<body>
+<canvas id="c" width="1200" height="630"></canvas>
+<div class="copy">
+  <div class="kicker" data-k="kicker">forward_pass(christian_natale)</div>
+  <h1>Christian Natale <b>AI Engineer</b></h1>
+  <div class="sub" data-k="sub">Agentes con LLMs en <strong>productos en producción</strong>. Buenos Aires.</div>
+</div>
+<div class="stats">
+  <div class="stat"><div class="v">79%</div><div class="k" data-k="s1">conversaciones sin humano</div></div>
+  <div class="stat"><div class="v">1031</div><div class="k" data-k="s2">pull requests</div></div>
+  <div class="stat"><div class="v">3</div><div class="k" data-k="s3">agentes en un pipeline</div></div>
+</div>
+<script>
+  // Idioma por hash: og.html#en
+  const EN = { sub: 'LLM agents in <strong>products running in production</strong>. Buenos Aires.', s1: 'conversations, no human', s2: 'pull requests', s3: 'agents in one pipeline' };
+  if (location.hash === '#en') { document.documentElement.lang = 'en'; document.querySelectorAll('[data-k]').forEach(el => { if (EN[el.dataset.k]) el.innerHTML = EN[el.dataset.k]; }); }
+
+  // Red estática: 5 capas en la mitad derecha, activación creciente hacia la salida.
+  const ctx = document.getElementById('c').getContext('2d');
+  const cols = [5, 6, 7, 7, 5], x0 = 700, x1 = 1130, y0 = 70, y1 = 560;
+  const ramp = t => { const a = [[91,63,214],[224,69,123],[255,179,71]]; const i = t < .5 ? 0 : 1, u = t < .5 ? t * 2 : (t - .5) * 2;
+    return `rgb(${a[i].map((v, k) => Math.round(v + (a[i + 1][k] - v) * u)).join(',')})`; };
+  let seed = 7; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+  const L = cols.map((n, l) => Array.from({ length: n }, (_, i) => ({ x: x0 + (x1 - x0) * l / (cols.length - 1), y: y0 + (y1 - y0) * (i + .5) / n, a: Math.min(1, .15 + l * .2 + rnd() * .35) })));
+  for (let l = 0; l < L.length - 1; l++) L[l].forEach(A => L[l + 1].forEach(B => {
+    if (rnd() > .42) return;
+    const hot = A.a > .55 && B.a > .6;
+    ctx.strokeStyle = hot ? ramp((A.a + B.a) / 2) : '#5b3fd6'; ctx.globalAlpha = hot ? .55 : .18; ctx.lineWidth = hot ? 1.6 : 1;
+    const mx = (A.x + B.x) / 2; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.bezierCurveTo(mx, A.y, mx, B.y, B.x, B.y); ctx.stroke();
+  }));
+  ctx.globalAlpha = 1;
+  L.flat().forEach(n => {
+    const r = 7 + n.a * 4;
+    if (n.a > .5) { ctx.fillStyle = ramp(n.a); ctx.globalAlpha = .2; ctx.beginPath(); ctx.arc(n.x, n.y, r + 10 * n.a, 0, 7); ctx.fill(); ctx.globalAlpha = 1; }
+    ctx.fillStyle = '#120e1d'; ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, 7); ctx.fill();
+    ctx.lineWidth = 2; ctx.strokeStyle = ramp(n.a); ctx.stroke();
+    ctx.fillStyle = ramp(n.a); ctx.beginPath(); ctx.arc(n.x, n.y, r * n.a * .7, 0, 7); ctx.fill();
+  });
+</script>
+</body>
+</html>

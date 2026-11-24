@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Christian Natale · AI Engineer</title>
+<!-- Imagen para compartir (LinkedIn, WhatsApp, X). Cambiar SITE si cambia el dominio: https://portfolio-chris-natale.vercel.app -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Christian Natale · AI Engineer">
+<meta property="og:description" content="LLM agents in products running in production: 79% of conversations resolved with no human, 1031 pull requests.">
+<meta property="og:url" content="https://portfolio-chris-natale.vercel.app/en/">
+<meta property="og:image" content="https://portfolio-chris-natale.vercel.app/assets/og-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Christian Natale, AI Engineer, next to a neural network">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://portfolio-chris-natale.vercel.app/assets/og-en.png">
+<link rel="alternate" hreflang="es" href="/">
+<link rel="alternate" hreflang="en" href="/en/">
+<link rel="icon" href="../assets/christian.jpg">
+<meta name="description" content="Christian Natale, AI Engineer in Buenos Aires. LLM agents, automation and full stack product work, told as a neural network.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;500;700&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;1,400&family=Martian+Mono:wght@300;400;500&display=swap">
+<style>
+/* Layout: una red neuronal viva como hero (cada nodo es un dato real de la carrera);
+   debajo, el "forward pass": cada sección es una capa, de la entrada (origen) a la salida (impacto). */
+:root {
+  /* dark-first: tinta violeta profunda + rampa de activación tipo "magma" */
+  --ink: #120e1d;          /* fondo */
+  --ink-2: #1b1530;        /* superficies */
+  --line: #2f2748;         /* bordes, sinapsis apagadas */
+  --fg: #ece8f6;           /* texto */
+  --muted: #a49cbd;        /* texto secundario */
+  --act-lo: #5b3fd6;       /* activación baja: violeta */
+  --act-mid: #e0457b;      /* activación media: magenta */
+  --act-hi: #ffb347;       /* activación alta: ámbar */
+  --glow: rgba(255,179,71,.18);
+  --f-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --f-body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
+  --f-mono: "Martian Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --step--1: .8125rem; --step-0: 1rem; --step-1: 1.25rem; --step-2: 1.6rem; --step-3: 2.3rem; --step-4: clamp(2.4rem, 7vw, 5.2rem);
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --ink: #f3f1f8; --ink-2: #ffffff; --line: #d9d3e8; --fg: #191329; --muted: #5d5574;
+    --act-lo: #4a2fc4; --act-mid: #c42a62; --act-hi: #b8640a; --glow: rgba(184,100,10,.12);
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --ink: #f3f1f8; --ink-2: #ffffff; --line: #d9d3e8; --fg: #191329; --muted: #5d5574;
+  --act-lo: #4a2fc4; --act-mid: #c42a62; --act-hi: #b8640a; --glow: rgba(184,100,10,.12);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--ink); color: var(--fg);
+  font-family: var(--f-body); font-size: var(--step-0); line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--act-hi); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: clamp(16px, 4vw, 40px); }
+.mono { font-family: var(--f-mono); font-size: var(--step--1); letter-spacing: .02em; }
+.label { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 500; line-height: 1.08; text-wrap: balance; margin: 0; }
+
+/* ---------- barra superior: progreso del forward pass ---------- */
+.topbar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in srgb, var(--ink) 86%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar .wrap { display: flex; align-items: center; gap: 1rem; padding-block: .7rem; }
+.brand { font-family: var(--f-display); font-weight: 700; font-size: .95rem; text-decoration: none; white-space: nowrap; }
+.pass { display: flex; gap: .25rem; margin-left: auto; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.pass::-webkit-scrollbar { display: none; }
+.pass a {
+  font-family: var(--f-mono); font-size: .7rem; text-decoration: none; color: var(--muted);
+  padding: .35rem .6rem; border-radius: 999px; border: 1px solid transparent; white-space: nowrap;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.pass a:hover { color: var(--fg); border-color: var(--line); }
+.pass a[aria-current="true"] { color: var(--ink); background: var(--act-hi); }
+.lang { flex: none; font-family: var(--f-mono); font-size: .72rem; text-decoration: none; color: var(--fg); border: 1px solid var(--line);
+  border-radius: 999px; padding: .4rem .6rem; }
+.lang:hover { border-color: var(--act-mid); }
+.theme-btn {
+  flex: none; background: none; border: 1px solid var(--line); color: var(--fg); border-radius: 999px;
+  width: 2rem; height: 2rem; cursor: pointer; font-size: .9rem; line-height: 1;
+}
+
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(2rem, 5vw, 3.5rem) 1rem; }
+.hero-head { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 2rem; align-items: end; }
+.hero h1 { font-size: var(--step-4); font-weight: 300; letter-spacing: -.02em; }
+.hero h1 b { font-weight: 700; display: block;
+  background: linear-gradient(90deg, var(--act-lo), var(--act-mid) 55%, var(--act-hi));
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-sub { max-width: 46ch; color: var(--muted); font-size: var(--step-1); line-height: 1.45; }
+.hero-sub strong { color: var(--fg); font-weight: 600; }
+
+.prompt {
+  margin-top: 1.6rem; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center;
+}
+.prompt .q { font-family: var(--f-mono); font-size: .8rem; color: var(--muted); margin-right: .25rem; }
+.chip {
+  font-family: var(--f-mono); font-size: .75rem; color: var(--fg); background: var(--ink-2);
+  border: 1px solid var(--line); border-radius: 999px; padding: .45rem .8rem; cursor: pointer;
+  transition: border-color .2s, transform .2s;
+}
+.chip:hover { border-color: var(--act-mid); transform: translateY(-1px); }
+
+.net-shell { position: relative; margin-top: 1.4rem; border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 0%, color-mix(in srgb, var(--act-lo) 14%, var(--ink)) 0%, var(--ink) 70%); }
+#net { display: block; width: 100%; height: clamp(440px, 62vw, 620px); cursor: crosshair; touch-action: pan-y; }
+.net-legend { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  padding: .7rem 1rem; pointer-events: none; }
+.ramp { display: flex; align-items: center; gap: .5rem; }
+.ramp i { display: block; width: 90px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--act-lo), var(--act-mid), var(--act-hi)); }
+.legend-mob { display: none; }
+@media (max-width: 639px) { .legend-desk { display: none; } .legend-mob { display: inline; } }
+.tip {
+  position: absolute; z-index: 3; max-width: 260px; pointer-events: none; opacity: 0; transform: translateY(4px);
+  transition: opacity .15s, transform .15s; background: var(--ink-2); border: 1px solid var(--line); border-radius: 10px;
+  padding: .65rem .8rem; font-size: .85rem; line-height: 1.4; box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.tip.on { opacity: 1; transform: none; }
+.tip .label { display: block; margin-bottom: .2rem; }
+
+/* ---------- capas ---------- */
+.layer { padding-block: clamp(3.5rem, 8vw, 6rem); border-top: 1px solid var(--line); scroll-margin-top: 3.5rem; }
+.layer-head { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 2rem; margin-bottom: 2.4rem; }
+.layer-id { display: flex; flex-direction: column; gap: .35rem; }
+.layer-id .n { font-family: var(--f-mono); font-size: 2.4rem; font-weight: 300; color: var(--act-mid); line-height: 1; }
+.layer-head h2 { font-size: var(--step-3); }
+.layer-head p { color: var(--muted); max-width: 60ch; margin: .8rem 0 0; }
+.layer-body { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 2rem; }
+.layer-body > :first-child:empty { display: block; }
+
+/* entrada / sobre mí */
+.about { font-size: var(--step-1); line-height: 1.55; max-width: 62ch; }
+.about p { margin: 0 0 1rem; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; background: var(--line);
+  border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-top: 1.6rem; }
+.facts div { background: var(--ink); padding: .9rem 1rem; min-width: 0; }
+.facts dt { margin: 0; } .facts dd { margin: .2rem 0 0; overflow-wrap: anywhere; }
+
+.portrait { margin: 0; display: grid; gap: .5rem; align-content: start; max-width: 220px; }
+.portrait img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 14px; border: 1px solid var(--line);
+  filter: grayscale(1) contrast(1.05); transition: filter .4s; }
+.portrait:hover img { filter: none; }
+.portrait .ph { position: relative; }
+.portrait .ph::after { content: ""; position: absolute; inset: 0; border-radius: 14px; pointer-events: none; mix-blend-mode: color;
+  background: linear-gradient(160deg, var(--act-lo), var(--act-mid) 60%, var(--act-hi)); opacity: .55; transition: opacity .4s; }
+.portrait:hover .ph::after { opacity: 0; }
+
+/* pesos / experiencia: timeline como secuencia de épocas de entrenamiento */
+.epochs { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.epoch { display: grid; grid-template-columns: 150px 22px minmax(0, 1fr); gap: 1.1rem; }
+.epoch .when { font-family: var(--f-mono); font-size: .78rem; color: var(--muted); padding-top: .3rem; text-align: right; }
+.epoch .rail { position: relative; }
+.epoch .rail::before { content: ""; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: var(--line); }
+.epoch .rail::after { content: ""; position: absolute; left: 4px; top: .45rem; width: 14px; height: 14px; border-radius: 50%;
+  background: var(--ink); border: 2px solid var(--act-c, var(--act-lo)); box-shadow: 0 0 0 4px var(--ink); }
+.epoch:last-child .rail::before { bottom: auto; height: 1rem; }
+.epoch .what { padding-bottom: 2.2rem; }
+.epoch h3 { font-size: var(--step-1); font-weight: 500; }
+.epoch .org { font-family: var(--f-mono); font-size: .78rem; color: var(--act-c, var(--act-lo)); margin: .3rem 0 .6rem; }
+.epoch ul { margin: 0; padding-left: 1.1rem; color: var(--muted); max-width: 64ch; }
+.epoch li { margin-bottom: .35rem; }
+.epoch li strong { color: var(--fg); font-weight: 600; }
+
+/* atención / proyectos */
+.projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; }
+.proj {
+  position: relative; display: flex; flex-direction: column; gap: .9rem; min-width: 0;
+  background: var(--ink-2); border: 1px solid var(--line); border-radius: 16px; padding: 1.4rem;
+  transition: border-color .25s, box-shadow .25s;
+}
+.proj:hover { border-color: color-mix(in srgb, var(--act-mid) 60%, var(--line)); box-shadow: 0 0 0 6px var(--glow); }
+.proj.feature { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 1.6rem; }
+.proj-top { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
+.proj h3 { font-size: var(--step-2); }
+.proj p { margin: 0; color: var(--muted); }
+.proj .ai { margin: 0; padding: .8rem .9rem; border-radius: 10px; background: color-mix(in srgb, var(--act-lo) 10%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--act-lo) 45%, var(--line)); font-size: .92rem; }
+.proj .ai .label { color: var(--act-lo); display: block; margin-bottom: .25rem; }
+:root:not([data-theme="light"]) .proj .ai .label { color: color-mix(in srgb, var(--act-lo) 50%, var(--fg)); }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: .8rem; }
+.metric { border-top: 2px solid var(--act-c, var(--act-hi)); padding-top: .5rem; }
+.metric .v { font-family: var(--f-display); font-weight: 700; font-size: var(--step-2); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.metric .k { font-size: .82rem; color: var(--muted); line-height: 1.35; }
+.tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: auto; }
+.tags span { font-family: var(--f-mono); font-size: .68rem; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; padding: .2rem .45rem; }
+.src { font-family: var(--f-mono); font-size: .66rem; color: var(--muted); opacity: .85; }
+
+.flow { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; counter-reset: f; }
+.flow li { counter-increment: f; position: relative; padding: .7rem .9rem .7rem 2.6rem; border: 1px solid var(--line); border-radius: 10px; font-size: .92rem; }
+.flow li::before { content: counter(f); position: absolute; left: .8rem; top: .75rem; font-family: var(--f-mono); font-size: .75rem; color: var(--act-hi); }
+.flow li .label { display: block; margin-bottom: .1rem; }
+.flow li:last-child { border-color: color-mix(in srgb, var(--act-hi) 55%, var(--line)); }
+
+/* embeddings / habilidades: clusters */
+.clusters { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem; }
+.cluster { border: 1px solid var(--line); border-radius: 14px; padding: 1.2rem; min-width: 0; }
+.cluster.core { background: linear-gradient(160deg, color-mix(in srgb, var(--act-mid) 14%, var(--ink-2)), var(--ink-2)); border-color: color-mix(in srgb, var(--act-mid) 40%, var(--line)); }
+.cluster h3 { font-size: var(--step-0); font-weight: 500; margin-bottom: .8rem; }
+.cluster ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; }
+.cluster li { display: grid; grid-template-columns: 10px minmax(0, 1fr); gap: .6rem; align-items: baseline; }
+.cluster li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--act-c, var(--act-lo)); transform: translateY(-1px); }
+.cluster li small { display: block; color: var(--muted); font-size: .82rem; }
+
+/* salida */
+.output { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 2rem; align-items: start; }
+.softmax { display: grid; gap: .7rem; }
+.sm-row { display: grid; grid-template-columns: minmax(0, 1fr) 3.2rem; gap: .8rem; align-items: center; }
+.sm-row .bar { height: 30px; border-radius: 6px; background: var(--ink-2); border: 1px solid var(--line); position: relative; overflow: hidden; }
+.sm-row .bar i { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg, var(--act-lo), var(--act-mid), var(--act-hi)); opacity: .9; }
+.sm-row .bar span { position: relative; z-index: 1; display: flex; align-items: center; height: 100%; padding-inline: .7rem; font-size: .85rem; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.45); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sm-row .p { font-family: var(--f-mono); font-size: .78rem; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.contact { border: 1px solid var(--line); border-radius: 16px; padding: 1.4rem; background: var(--ink-2); }
+.contact h3 { font-size: var(--step-2); margin-bottom: 1rem; }
+.contact dl { margin: 0; display: grid; gap: .9rem; }
+.contact dd { margin: .15rem 0 0; display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; overflow-wrap: anywhere; }
+.copy { font-family: var(--f-mono); font-size: .68rem; background: none; color: var(--muted); border: 1px solid var(--line); border-radius: 6px; padding: .2rem .45rem; cursor: pointer; }
+.copy:hover { color: var(--fg); border-color: var(--act-mid); }
+footer { border-top: 1px solid var(--line); padding-block: 1.6rem 2.4rem; color: var(--muted); }
+footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+@media (max-width: 860px) {
+  .hero-head, .layer-head, .layer-body, .output, .proj.feature { grid-template-columns: minmax(0, 1fr); }
+  .layer-head { gap: 1rem; }
+  .layer-body > :first-child:empty { display: none; }
+  .projects { grid-template-columns: minmax(0, 1fr); }
+  .epoch { grid-template-columns: 22px minmax(0, 1fr); }
+  .epoch .when { grid-column: 2; text-align: left; padding-top: 0; order: -1; }
+  .epoch .rail { grid-row: 1 / span 2; }
+  .pass a:not([aria-current="true"]) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">C. Natale</a>
+    <nav class="pass" aria-label="Portfolio layers">
+      <a href="#entrada" data-sec="entrada">00 input</a>
+      <a href="#trayectoria" data-sec="trayectoria">01 path</a>
+      <a href="#habilidades" data-sec="habilidades">02 embeddings</a>
+      <a href="#proyectos" data-sec="proyectos">03 attention</a>
+      <a href="#salida" data-sec="salida">04 output</a>
+    </nav>
+    <a class="lang" href="../" hreflang="es" lang="es">ES</a>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light or dark theme">◐</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap" aria-labelledby="h-name">
+    <div class="hero-head">
+      <div>
+        <p class="label">forward_pass(christian_natale) · Buenos Aires</p>
+        <h1 id="h-name">Christian Natale <b>AI Engineer</b></h1>
+      </div>
+      <p class="hero-sub">I put LLMs into <strong>products that are already in production</strong>: WhatsApp agents, document extraction and internal tools, on a full stack base of TypeScript, Node.js and React.</p>
+    </div>
+
+    <div class="prompt" role="group" aria-label="Questions for the network">
+      <span class="q">&gt; ask the network:</span>
+      <button class="chip" type="button" data-ask="agentes">What agents has he built?</button>
+      <button class="chip" type="button" data-ask="impacto">What impact did they have?</button>
+      <button class="chip" type="button" data-ask="stack">What stack does he use?</button>
+      <button class="chip" type="button" data-ask="origen">Where does he come from?</button>
+    </div>
+
+    <div class="net-shell">
+      <canvas id="net" aria-label="Interactive neural network: each node is part of Christian's career, from his path to his impact. Hover a node to see the detail." role="img"></canvas>
+      <div class="tip" id="tip" role="status" aria-live="polite"></div>
+      <div class="net-legend">
+        <span class="label legend-desk">path → stack → AI → projects → output</span>
+        <span class="label legend-mob">tap a node to see the detail</span>
+        <span class="ramp label">activation <i></i></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 00 · ENTRADA -->
+  <section class="layer" id="entrada" aria-labelledby="h-entrada">
+    <div class="wrap">
+      <div class="layer-head">
+        <div class="layer-id"><span class="n">00</span><span class="label">input layer</span></div>
+        <div><h2 id="h-entrada">About me</h2></div>
+      </div>
+      <div class="layer-body">
+        <figure class="portrait">
+          <div class="ph"><img src="../assets/christian.jpg" alt="Christian Natale with his Siamese cat" width="460" height="460" loading="lazy"></div>
+          <figcaption class="label">input · 460×460×3</figcaption>
+        </figure>
+        <div>
+          <div class="about">
+            <p>I'm a product-minded AI Engineer. At Rocking Product I build software for clients, and my favorite part is finding the manual process an agent can handle better.</p>
+            <p>I work directly with clients: I map their processes, define scope, build, deploy and measure. Then I keep improving what runs in production.</p>
+          </div>
+          <dl class="facts">
+            <div><dt class="label">Base</dt><dd>Buenos Aires, Argentina</dd></div>
+            <div><dt class="label">Current role</dt><dd>AI Engineer · Rocking Product</dd></div>
+            <div><dt class="label">Education</dt><dd>Systems Engineering · UAI (in progress)</dd></div>
+            <div><dt class="label">Languages</dt><dd>Native Spanish · B1 technical English</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 · TRAYECTORIA -->
+  <section class="layer" id="trayectoria" aria-labelledby="h-tray">
+    <div class="wrap">
+      <div class="layer-head">
+        <div class="layer-id"><span class="n">01</span><span class="label">training epochs</span></div>
+        <div>
+          <h2 id="h-tray">Career path</h2>
+          <p>Each stage adjusted the weights: frontend first, then backend and support, and today AI applied to real processes.</p>
+        </div>
+      </div>
+      <div class="layer-body">
+        <div></div>
+        <ol class="epochs">
+          <li class="epoch" style="--act-c: var(--act-lo)">
+            <div class="when">2021</div><div class="rail"></div>
+            <div class="what">
+              <h3>First repos</h3>
+              <p class="org">github.com/Chrisnatalx</p>
+              <ul><li>Online stores, React apps and full stack courses. The model's starting point.</li></ul>
+            </div>
+          </li>
+          <li class="epoch" style="--act-c: var(--act-lo)">
+            <div class="when">Mar 2022 — now</div><div class="rail"></div>
+            <div class="what">
+              <h3>Freelance Developer</h3>
+              <p class="org">Self-employed</p>
+              <ul>
+                <li>Software for several clients, as technical lead and on frontend and backend.</li>
+                <li>Solution design, technical decisions and feature planning.</li>
+                <li>Workflows and automations to streamline internal processes.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="epoch" style="--act-c: var(--act-mid)">
+            <div class="when">Dec 2023 — Sep 2025</div><div class="rail"></div>
+            <div class="what">
+              <h3>Software Technician</h3>
+              <p class="org">Fractial Systems</p>
+              <ul>
+                <li>Support and incident resolution in corporate environments for multiple clients.</li>
+                <li>Failure analysis and improvements to implementation processes.</li>
+                <li>Diagnosis with users and structured reports to the development team.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="epoch" style="--act-c: var(--act-hi)">
+            <div class="when">Dec 2024 — now</div><div class="rail"></div>
+            <div class="what">
+              <h3>AI Engineer</h3>
+              <p class="org">Rocking Product</p>
+              <ul>
+                <li><strong>1028 PRs across 29 repositories</strong> in the organization, over 850 in 2026 alone.</li>
+                <li>A WhatsApp agent connected to Odoo that resolved <strong>79% of conversations</strong> with no human involved.</li>
+                <li>Extraction and validation agents for foreign-trade documents, with offline evals.</li>
+                <li>I created <strong>Estima</strong> as my own project; it is now the team's tool and replaced Jira.</li>
+                <li>I lead client projects: discovery, scope, priorities and delivery sign-off.</li>
+                <li>I review PRs, keep changes traceable and fix critical incidents hands-on.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="epoch" style="--act-c: var(--act-mid)">
+            <div class="when">2025 — now</div><div class="rail"></div>
+            <div class="what">
+              <h3>Systems Engineering</h3>
+              <p class="org">UAI</p>
+              <ul><li>In progress, alongside work.</li></ul>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · EMBEDDINGS -->
+  <section class="layer" id="habilidades" aria-labelledby="h-skills">
+    <div class="wrap">
+      <div class="layer-head">
+        <div class="layer-id"><span class="n">02</span><span class="label">embeddings</span></div>
+        <div>
+          <h2 id="h-skills">Skills, clustered by proximity</h2>
+          <p>Each skill comes with where I used it. No percentage bars: the evidence is in the projects.</p>
+        </div>
+      </div>
+      <div class="layer-body">
+        <div></div>
+        <div class="clusters">
+          <div class="cluster core" style="--act-c: var(--act-hi)">
+            <h3>Applied AI</h3>
+            <ul>
+              <li><span>LLM agents<small>Claude, OpenAI and MiniMax for WhatsApp, documents and appraisals</small></span></li>
+              <li><span>Document extraction<small>OCR with Document AI and typed output contracts (Pydantic)</small></span></li>
+              <li><span>Agent evals<small>offline harness with real documents and verified values</small></span></li>
+              <li><span>RAG and prompt engineering<small>WhatsApp agent FAQs and system prompts with human handoff</small></span></li>
+              <li><span>Cost and observability<small>cost per operation, LLM credit alerts</small></span></li>
+            </ul>
+          </div>
+          <div class="cluster" style="--act-c: var(--act-mid)">
+            <h3>Agents and tooling</h3>
+            <ul>
+              <li><span>MCP<small>MCP server with personal tokens in Estima</small></span></li>
+              <li><span>Claude Code and Agent SDK<small>custom skills and Alter, a voice assistant</small></span></li>
+              <li><span>LangChain<small>model factory in the company's base framework</small></span></li>
+              <li><span>Memory and human-in-the-loop<small>AlterNata: persistent memory, narrow permissions and approval by message</small></span></li>
+              <li><span>n8n<small>internal workflows and automations</small></span></li>
+            </ul>
+          </div>
+          <div class="cluster" style="--act-c: var(--act-mid)">
+            <h3>Integrations</h3>
+            <ul>
+              <li><span>WhatsApp Cloud API<small>bots with the 24 h window and human handoff</small></span></li>
+              <li><span>Odoo<small>sessions, user and order lookups</small></span></li>
+              <li><span>Gmail API<small>reading mail and drafting replies automatically</small></span></li>
+              <li><span>REST APIs and SSE<small>endpoint design and live updates</small></span></li>
+            </ul>
+          </div>
+          <div class="cluster" style="--act-c: var(--act-lo)">
+            <h3>Full stack product</h3>
+            <ul>
+              <li><span>TypeScript · Node.js<small>main backend in every product</small></span></li>
+              <li><span>React · Next.js<small>product frontends and landing pages</small></span></li>
+              <li><span>Python<small>agent package and evals</small></span></li>
+              <li><span>PostgreSQL · SQL Server<small>TypeORM, Sequelize, migrations</small></span></li>
+            </ul>
+          </div>
+          <div class="cluster" style="--act-c: var(--act-lo)">
+            <h3>Infra and measurement</h3>
+            <ul>
+              <li><span>Docker · DigitalOcean<small>deploying database, backend and frontend</small></span></li>
+              <li><span>Vercel · GitHub<small>CI, PR reviews, releases</small></span></li>
+              <li><span>PostHog · GA4<small>usage metrics and signup funnels</small></span></li>
+            </ul>
+          </div>
+          <div class="cluster" style="--act-c: var(--act-lo)">
+            <h3>How I work</h3>
+            <ul>
+              <li><span>Client discovery<small>finding pain points and where AI fits</small></span></li>
+              <li><span>Scope and priorities<small>agile, Jira, specs before code</small></span></li>
+              <li><span>Mentoring<small>supporting junior developers</small></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · ATENCIÓN -->
+  <section class="layer" id="proyectos" aria-labelledby="h-proj">
+    <div class="wrap">
+      <div class="layer-head">
+        <div class="layer-id"><span class="n">03</span><span class="label">attention layer</span></div>
+        <div>
+          <h2 id="h-proj">Projects I focused on</h2>
+          <p>Client projects are unnamed for confidentiality. Every metric says where it comes from.</p>
+        </div>
+      </div>
+      <div class="projects">
+
+        <article class="proj feature" id="p-whatsapp" style="--act-c: var(--act-hi)">
+          <div style="display:flex;flex-direction:column;gap:.9rem;min-width:0">
+            <div class="proj-top"><span class="label">conversational agent · in production</span></div>
+            <h3>WhatsApp agent connected to Odoo</h3>
+            <p>WhatsApp customer service for a client that runs on Odoo. The agent answers FAQs, looks up users and orders in Odoo, and hands the conversation to a person when needed.</p>
+            <p class="ai"><span class="label">where the AI is</span>LLM with its own system prompt and RAG for FAQs, human escalation, WhatsApp's 24 h window, live updates over SSE, and an email alert when model credits run out.</p>
+            <div class="tags"><span>WhatsApp Cloud API</span><span>Odoo</span><span>OpenAI</span><span>LangChain</span><span>Node.js</span><span>n8n</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:1rem;min-width:0">
+            <div class="metrics">
+              <div class="metric"><div class="v">79%</div><div class="k">of conversations resolved with no human involved</div></div>
+              <div class="metric" style="--act-c: var(--act-mid)"><div class="v">223</div><div class="k">of my PRs across backend and frontend</div></div>
+            </div>
+            <span class="src">source: CV (79%) · GitHub, Nov 2026 (PRs)</span>
+          </div>
+        </article>
+
+        <article class="proj feature" id="p-docs" style="--act-c: var(--act-hi)">
+          <div style="display:flex;flex-direction:column;gap:.9rem;min-width:0">
+            <div class="proj-top"><span class="label">multi-agent · foreign trade</span></div>
+            <h3>Customs document review with agents</h3>
+            <p>A platform for a customs broker. It reads invoices, packing lists, air waybills and customs declarations, cross-checks data between documents and raises alerts when something doesn't match.</p>
+            <p class="ai"><span class="label">where the AI is</span>Three agents: document extractor, semantic checker and Gmail intake. OCR with Document AI, output contracts with retries, and an offline eval harness to compare models (Haiku as primary, Sonnet for long documents).</p>
+            <div class="tags"><span>Python</span><span>Pydantic</span><span>Claude</span><span>Document AI</span><span>Node.js</span><span>PostgreSQL</span><span>PostHog</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:1rem;min-width:0">
+            <div class="metrics">
+              <div class="metric"><div class="v">3</div><div class="k">agents in the pipeline</div></div>
+              <div class="metric"><div class="v">211/211</div><div class="k">agent suite tests passing</div></div>
+              <div class="metric" style="--act-c: var(--act-mid)"><div class="v">34</div><div class="k">real documents scored against verified values</div></div>
+              <div class="metric" style="--act-c: var(--act-mid)"><div class="v">228</div><div class="k">of my PRs across front, back and agents</div></div>
+            </div>
+            <span class="src">source: eval QA from 2026-10-16 and GitHub, Nov 2026</span>
+          </div>
+        </article>
+
+        <article class="proj feature" id="p-alternata" style="--act-c: var(--act-hi)">
+          <div style="display:flex;flex-direction:column;gap:.9rem;min-width:0">
+            <div class="proj-top"><span class="label">my own project · second brain</span><a class="mono" href="https://github.com/Chrisnatalx/Second-Brain" target="_blank" rel="noopener">view design ↗</a></div>
+            <h3>AlterNata</h3>
+            <p>My second brain on Discord. When someone mentions me, it answers in my voice with a memory that stays up to date. If someone asks for a change to a project, it implements it, but push, merge and deploy wait for my approval by message.</p>
+            <p class="ai"><span class="label">where the AI is</span>A Claude Code session connected to Discord through Channels. It works as a dispatcher: it sorts each request and hands the heavy work to subagents in worktrees. It only sees the projects folder on my PC, its memory is markdown versioned in git, and it treats any instruction inside a message, PR or file as data, not as an order.</p>
+            <div class="tags"><span>Claude Code</span><span>Discord</span><span>Subagents</span><span>Persistent memory</span><span>Human-in-the-loop</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:1rem;min-width:0">
+            <ol class="flow">
+              <li><span class="label">input</span>A message arrives on Discord</li>
+              <li><span class="label">context</span>It sorts the request and answers in my voice with its memory</li>
+              <li><span class="label">action</span>If someone asks for a change, a subagent implements it in a worktree</li>
+              <li><span class="label">control</span>Push, merge and deploy wait for my OK by DM</li>
+            </ol>
+            <span class="src">source: Christian · the repo design doc</span>
+          </div>
+        </article>
+
+        <article class="proj" id="p-estima" style="--act-c: var(--act-hi)">
+          <div class="proj-top"><span class="label">my own project · in production</span></div>
+          <h3>Estima</h3>
+          <p>I started it on my own in December 2025: project estimation and management with tasks, hours, versions and helpdesk. I showed it to the team, they liked it, and in February we put it in production and retired Jira.</p>
+          <p class="ai"><span class="label">where the AI is</span>MCP server with personal tokens, so Claude can log and query hours and tasks directly. Used by people and agents.</p>
+          <div class="metrics">
+            <div class="metric"><div class="v">Jira</div><div class="k">replaced: the team now works in Estima</div></div>
+            <div class="metric" style="--act-c: var(--act-mid)"><div class="v">2 months</div><div class="k">from my own idea to production</div></div>
+            <div class="metric" style="--act-c: var(--act-lo)"><div class="v">123</div><div class="k">PRs across frontend and backend</div></div>
+          </div>
+          <div class="tags"><span>MCP</span><span>Node.js</span><span>React</span><span>Discord</span></div>
+          <span class="src">source: Christian · GitHub, Nov 2026</span>
+        </article>
+
+        <article class="proj" id="p-realtor" style="--act-c: var(--act-mid)">
+          <div class="proj-top"><span class="label">proptech client · built from scratch</span></div>
+          <h3>Real estate appraisal platform</h3>
+          <p>Property appraisals in Buenos Aires that match sellers with the right real estate agent. I built it from scratch: backend, app, landing page and bot.</p>
+          <p class="ai"><span class="label">where the AI is</span>Open-conversation WhatsApp bot, a data extractor, and AI-written reports with output guardrails.</p>
+          <div class="metrics">
+            <div class="metric"><div class="v">180</div><div class="k">PRs across app, backend and landing</div></div>
+            <div class="metric" style="--act-c: var(--act-lo)"><div class="v">GA4</div><div class="k">signup funnel measured end to end</div></div>
+          </div>
+          <div class="tags"><span>Next.js</span><span>Express</span><span>TypeORM</span><span>WhatsApp</span><span>MiniMax</span></div>
+          <span class="src">source: GitHub, Nov 2026</span>
+        </article>
+
+
+
+        <article class="proj" id="p-accel" style="--act-c: var(--act-lo)">
+          <div class="proj-top"><span class="label">platform · base of every product</span></div>
+          <h3>MVP Accelerator</h3>
+          <p>The framework every product is built on: auth, multi-tenancy, S3 storage and an LLM model factory.</p>
+          <div class="metrics">
+            <div class="metric"><div class="v">79</div><div class="k">PRs to the base framework</div></div>
+          </div>
+          <div class="tags"><span>TypeScript</span><span>LangChain</span><span>React</span><span>PostgreSQL</span></div>
+          <span class="src">source: GitHub, Nov 2026</span>
+        </article>
+
+        <article class="proj" id="p-alter" style="--act-c: var(--act-hi)">
+          <div class="proj-top"><span class="label">personal project · open source</span><a class="mono" href="https://github.com/Chrisnatalx/Alter" target="_blank" rel="noopener">view repo ↗</a></div>
+          <h3>Alter</h3>
+          <p>A voice assistant on Claude that handles Gmail, Calendar, Drive and GitHub. It also responds to hand gestures.</p>
+          <p class="ai"><span class="label">where the AI is</span>Claude Agent SDK with subagents and background tasks. It asks for confirmation before sending or deleting anything. Gestures via MediaPipe.</p>
+          <div class="tags"><span>Claude Agent SDK</span><span>MediaPipe</span><span>Node.js</span><span>Voice</span></div>
+          <span class="src">source: repo README</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · SALIDA -->
+  <section class="layer" id="salida" aria-labelledby="h-out">
+    <div class="wrap">
+      <div class="layer-head">
+        <div class="layer-id"><span class="n">04</span><span class="label">output layer</span></div>
+        <div>
+          <h2 id="h-out">Where my work went</h2>
+          <p>The real distribution of my <strong>1031 pull requests</strong> on GitHub, 977 of them merged. This is the network's output: where my hours go.</p>
+        </div>
+      </div>
+      <div class="output">
+        <div class="softmax" id="softmax" aria-label="Pull requests by product"></div>
+        <aside class="contact">
+          <h3>Let's talk</h3>
+          <dl>
+            <div><dt class="label">Email</dt><dd><a href="mailto:natale.christian.a@gmail.com">natale.christian.a@gmail.com</a><button class="copy" type="button" data-copy="natale.christian.a@gmail.com">copy</button></dd></div>
+            <div><dt class="label">LinkedIn</dt><dd><a href="https://www.linkedin.com/in/christian-natale-/" target="_blank" rel="noopener">linkedin.com/in/christian-natale-</a></dd></div>
+            <div><dt class="label">GitHub</dt><dd><a href="https://github.com/Chrisnatalx" target="_blank" rel="noopener">github.com/Chrisnatalx</a></dd></div>
+            <div><dt class="label">Location</dt><dd>Buenos Aires · remote</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">© 2026 Christian Natale</span>
+    <span class="mono">data: CV and GitHub · Nov 2026</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  /* ---------- tema ---------- */
+  const root = document.documentElement;
+  try { const t = localStorage.getItem("cn-theme"); if (t) root.dataset.theme = t; } catch (e) {}
+  document.getElementById("themeBtn").addEventListener("click", () => {
+    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+    try { localStorage.setItem("cn-theme", root.dataset.theme); } catch (e) {}
+    readColors();
+  });
+
+  /* ---------- salida: distribución de PRs (GitHub, nov 2026) ---------- */
+  const PRS = [
+    ["Customs document review", 228], ["WhatsApp + Odoo agent", 223], ["Real estate appraisals", 180],
+    ["Estima", 123], ["Service quoting engine", 80], ["MVP Accelerator", 79], ["15 other repos", 118]
+  ];
+  const total = PRS.reduce((s, [, v]) => s + v, 0);
+  const max = PRS[0][1];
+  document.getElementById("softmax").innerHTML = PRS.map(([k, v]) =>
+    `<div class="sm-row"><div class="bar"><i style="width:${(v / max * 100).toFixed(1)}%"></i><span>${k} · ${v}</span></div><span class="p">${(v / total * 100).toFixed(1)}%</span></div>`
+  ).join("");
+
+  /* ---------- copiar ---------- */
+  document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => {
+    const txt = b.dataset.copy;
+    const done = () => { b.textContent = "copied"; setTimeout(() => b.textContent = "copy", 1500); };
+    if (navigator.clipboard) navigator.clipboard.writeText(txt).then(done).catch(() => selectText(b.previousElementSibling));
+    else selectText(b.previousElementSibling);
+  }));
+  function selectText(el) { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+
+  /* ---------- nav: capa activa ---------- */
+  const links = [...document.querySelectorAll(".pass a")];
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) links.forEach(a => a.setAttribute("aria-current", a.dataset.sec === e.target.id ? "true" : "false"));
+  }), { rootMargin: "-45% 0px -50% 0px" });
+  ["entrada", "trayectoria", "habilidades", "proyectos", "salida"].forEach(id => io.observe(document.getElementById(id)));
+
+  /* ---------- la red ---------- */
+  // Cada nodo es un dato real; las aristas dicen qué alimentó a qué.
+  const LAYERS = ["path", "stack", "AI", "projects", "output"];
+  const N = [
+    // capa 0: trayectoria
+    { id: "y21", l: 0, t: "2021 · first repos", d: "First public projects on GitHub: React, stores and courses.", go: "#trayectoria" },
+    { id: "free", l: 0, t: "Freelance · 2022", d: "Software for clients as tech lead and full stack developer.", go: "#trayectoria" },
+    { id: "fract", l: 0, t: "Fractial · 2023", d: "Technical support and diagnosis in corporate environments.", go: "#trayectoria" },
+    { id: "rock", l: 0, t: "Rocking · 2024", d: "1028 PRs across 29 repos. AI applied to client products.", go: "#trayectoria" },
+    { id: "uai", l: 0, t: "UAI · 2025", d: "Systems Engineering, in progress.", go: "#trayectoria" },
+    // capa 1: stack
+    { id: "ts", l: 1, t: "TypeScript", d: "The base language of almost everything I build.", go: "#habilidades" },
+    { id: "node", l: 1, t: "Node.js", d: "Product backends, REST APIs and SSE.", go: "#habilidades" },
+    { id: "react", l: 1, t: "React · Next.js", d: "Product frontends and landing pages.", go: "#habilidades" },
+    { id: "py", l: 1, t: "Python", d: "Agent package with Pydantic contracts and evals.", go: "#habilidades" },
+    { id: "pg", l: 1, t: "PostgreSQL", d: "TypeORM, Sequelize, migrations. SQL Server too.", go: "#habilidades" },
+    { id: "ops", l: 1, t: "Docker · DO", d: "End-to-end deploys on DigitalOcean and Vercel.", go: "#habilidades" },
+    // capa 2: IA
+    { id: "llm", l: 2, t: "LLMs", d: "Claude, OpenAI and MiniMax integrated into real products.", go: "#habilidades" },
+    { id: "agt", l: 2, t: "Agents", d: "Agents with tools, human handoff and output contracts.", go: "#habilidades" },
+    { id: "rag", l: 2, t: "RAG", d: "Retrieval over FAQs for the WhatsApp agent.", go: "#habilidades" },
+    { id: "ext", l: 2, t: "Extraction", d: "OCR with Document AI and structured document extraction.", go: "#habilidades" },
+    { id: "eval", l: 2, t: "Evals", d: "Offline harness with real documents and verified values.", go: "#habilidades" },
+    { id: "auto", l: 2, t: "n8n", d: "Internal workflows and automations.", go: "#habilidades" },
+    { id: "mem", l: 2, t: "Memory", d: "Persistent memory that stays up to date, in AlterNata.", go: "#p-alternata" },
+    { id: "mcp", l: 2, t: "MCP · Claude Code", d: "MCP server, custom skills and Claude Agent SDK.", go: "#habilidades" },
+    // capa 3: proyectos
+    { id: "pw", l: 3, t: "WhatsApp + Odoo agent", d: "WhatsApp customer service connected to Odoo, with RAG and human escalation.", go: "#p-whatsapp" },
+    { id: "pd", l: 3, t: "Customs review", d: "Three agents that extract and cross-check foreign-trade documents.", go: "#p-docs" },
+    { id: "pr", l: 3, t: "Real estate appraisals", d: "Built from scratch: WhatsApp bot and AI-written reports.", go: "#p-realtor" },
+    { id: "pe", l: 3, t: "Estima", d: "My own project: idea to production in 2 months, with an MCP server.", go: "#p-estima" },
+    { id: "pa", l: 3, t: "MVP Accelerator", d: "Base framework with an LLM model factory.", go: "#p-accel" },
+    { id: "palt", l: 3, t: "AlterNata", d: "My second brain on Discord: answers for me and asks for approval before acting.", go: "#p-alternata" },
+    { id: "pal", l: 3, t: "Alter", d: "Voice assistant on Claude Agent SDK. Open source.", go: "#p-alter" },
+    // capa 4: salida
+    { id: "o79", l: 4, t: "79% no human", d: "WhatsApp conversations resolved by the agent with no human involved (CV).", go: "#p-whatsapp", hot: 1 },
+    { id: "o211", l: 4, t: "211/211 tests", d: "Agent test suite passing on the document platform.", go: "#p-docs", hot: 1 },
+    { id: "o1031", l: 4, t: "1031 PRs", d: "Pull requests on GitHub, 977 merged (Nov 2026).", go: "#salida", hot: 1 },
+    { id: "ojira", l: 4, t: "Jira replaced", d: "The team dropped Jira and works in Estima, my own project.", go: "#p-estima", hot: 1 },
+    { id: "o34", l: 4, t: "32 repos", d: "Distinct repositories with my PRs.", go: "#salida", hot: 1 }
+  ];
+  const E = [
+    ["y21", "react"], ["free", "ts"], ["free", "react"], ["free", "node"], ["fract", "pg"], ["fract", "ops"],
+    ["rock", "ts"], ["rock", "node"], ["rock", "py"], ["rock", "ops"], ["rock", "pg"], ["uai", "py"],
+    ["ts", "agt"], ["ts", "mcp"], ["node", "agt"], ["node", "rag"], ["node", "auto"], ["node", "llm"],
+    ["py", "ext"], ["py", "eval"], ["py", "agt"], ["pg", "rag"], ["react", "mcp"], ["ops", "agt"],
+    ["llm", "pw"], ["llm", "pd"], ["llm", "pr"], ["llm", "pa"], ["llm", "pal"],
+    ["agt", "pw"], ["agt", "pd"], ["agt", "pr"], ["agt", "pal"], ["rag", "pw"], ["auto", "pw"],
+    ["ext", "pd"], ["ext", "pr"], ["eval", "pd"], ["mcp", "pe"], ["mcp", "pal"], ["llm", "palt"], ["agt", "palt"], ["mem", "palt"], ["node", "mem"], ["pg", "mem"],
+    ["pw", "o79"], ["pd", "o211"], ["pw", "o1031"], ["pd", "o1031"], ["pr", "o1031"], ["pe", "o1031"], ["pa", "o1031"],
+    ["pr", "o34"], ["pe", "o34"], ["pa", "o34"], ["pe", "ojira"]
+  ];
+  const ASK = {
+    agentes: ["agt", "llm"], impacto: ["pw", "pd"], stack: ["ts", "node", "react", "py"], origen: ["y21", "free", "fract"]
+  };
+
+  const byId = Object.fromEntries(N.map(n => [n.id, n]));
+  N.forEach(n => { n.a = 0; n.out = []; n.in = []; });
+  E.forEach(([a, b]) => { byId[a].out.push(b); byId[b].in.push(a); });
+
+  const cv = document.getElementById("net"), ctx = cv.getContext("2d"), tip = document.getElementById("tip");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let W = 0, H = 0, vertical = false, C = {}, hover = null, pulses = [], lastT = 0, focusSet = null;
+
+  function readColors() {
+    const s = getComputedStyle(root);
+    ["--ink", "--ink-2", "--line", "--fg", "--muted", "--act-lo", "--act-mid", "--act-hi"].forEach(k => C[k] = s.getPropertyValue(k).trim());
+  }
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", readColors);
+
+  function layout() {
+    const r = cv.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2);
+    W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    vertical = W < 640;
+    const padX = vertical ? 28 : 90, padTop = 46, padBot = vertical ? 80 : 54;
+    for (let l = 0; l < LAYERS.length; l++) {
+      const col = N.filter(n => n.l === l);
+      col.forEach((n, i) => {
+        const f = (i + .5) / col.length, g = l / (LAYERS.length - 1);
+        if (vertical) { n.x = padX + f * (W - padX * 2); n.y = padTop + g * (H - padTop - padBot); }
+        else { n.x = padX + g * (W - padX * 2); n.y = padTop + f * (H - padTop - padBot); }
+      });
+    }
+  }
+
+  function mix(a) { // rampa de activación: violeta → magenta → ámbar
+    return a < .5 ? lerpC(C["--act-lo"], C["--act-mid"], a * 2) : lerpC(C["--act-mid"], C["--act-hi"], (a - .5) * 2);
+  }
+  function hex(h) { h = h.replace("#", ""); return [0, 2, 4].map(i => parseInt(h.slice(i, i + 2), 16)); }
+  function lerpC(a, b, t) { const A = hex(a), B = hex(b); return `rgb(${A.map((v, i) => Math.round(v + (B[i] - v) * t)).join(",")})`; }
+
+  function fire(id, strength = 1) {
+    const n = byId[id], now = performance.now(); n.a = Math.max(n.a, strength);
+    if (now - (n.last || 0) < 450) return; // período refractario: evita cascadas exponenciales
+    n.last = now;
+    n.out.forEach(o => pulses.push({ from: n, to: byId[o], t: 0, s: strength * (.82 + Math.random() * .12), sp: .9 + Math.random() * .5 }));
+  }
+
+  function related(id) { // camino completo hacia atrás y hacia adelante
+    const set = new Set([id]);
+    const walk = (k, dir) => byId[k][dir].forEach(x => { if (!set.has(x)) { set.add(x); walk(x, dir); } });
+    walk(id, "in"); walk(id, "out"); return set;
+  }
+
+  function draw(t) {
+    const dt = Math.min((t - lastT) / 1000 || 0, .05); lastT = t;
+    ctx.clearRect(0, 0, W, H);
+    const active = hover ? related(hover.id) : focusSet;
+
+    // etiquetas de capa
+    ctx.font = `500 10px "Martian Mono", monospace`; ctx.fillStyle = C["--muted"]; ctx.textAlign = vertical ? "left" : "center";
+    LAYERS.forEach((L, l) => {
+      const g = l / (LAYERS.length - 1);
+      if (vertical) ctx.fillText(`${l} · ${L.toUpperCase()}`, 12, 46 + g * (H - 126) - 18);
+      else ctx.fillText(`${l} · ${L.toUpperCase()}`, 90 + g * (W - 180), 22);
+    });
+
+    // sinapsis
+    E.forEach(([a, b]) => {
+      const A = byId[a], B = byId[b], on = active && active.has(a) && active.has(b);
+      ctx.strokeStyle = on ? mix(.55) : C["--act-lo"]; ctx.globalAlpha = active ? (on ? .95 : .08) : .26;
+      ctx.lineWidth = on ? 1.6 : 1;
+      ctx.beginPath(); ctx.moveTo(A.x, A.y);
+      if (vertical) ctx.bezierCurveTo(A.x, (A.y + B.y) / 2, B.x, (A.y + B.y) / 2, B.x, B.y);
+      else ctx.bezierCurveTo((A.x + B.x) / 2, A.y, (A.x + B.x) / 2, B.y, B.x, B.y);
+      ctx.stroke();
+    });
+    ctx.globalAlpha = 1;
+
+    // pulsos viajando
+    pulses = pulses.filter(p => {
+      p.t += dt * p.sp;
+      if (p.t >= 1) { if (p.s > .25) fire(p.to.id, p.s); else p.to.a = Math.max(p.to.a, p.s); return false; }
+      const u = p.t, A = p.from, B = p.to;
+      let x, y;
+      if (vertical) { const my = (A.y + B.y) / 2; x = bez(A.x, A.x, B.x, B.x, u); y = bez(A.y, my, my, B.y, u); }
+      else { const mx = (A.x + B.x) / 2; x = bez(A.x, mx, mx, B.x, u); y = bez(A.y, A.y, B.y, B.y, u); }
+      ctx.fillStyle = mix(Math.min(1, p.s)); ctx.shadowColor = ctx.fillStyle; ctx.shadowBlur = 10;
+      ctx.beginPath(); ctx.arc(x, y, 2.4, 0, 7); ctx.fill(); ctx.shadowBlur = 0;
+      return true;
+    });
+
+    // neuronas
+    N.forEach(n => {
+      n.a = Math.max(0, n.a - dt * .55);
+      const dim = active && !active.has(n.id), base = n.hot ? .35 : .08;
+      const a = Math.min(1, Math.max(base, n.a, active && active.has(n.id) ? .75 : 0));
+      const r = (n.l === 3 || n.hot ? 8 : 6) + a * 4;
+      ctx.globalAlpha = dim ? .3 : 1;
+      if (a > .2) { ctx.fillStyle = mix(a); ctx.globalAlpha *= .18; ctx.beginPath(); ctx.arc(n.x, n.y, r + 9 * a, 0, 7); ctx.fill(); ctx.globalAlpha = dim ? .3 : 1; }
+      ctx.fillStyle = C["--ink"]; ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, 7); ctx.fill();
+      ctx.lineWidth = 2; ctx.strokeStyle = mix(a); ctx.stroke();
+      ctx.fillStyle = mix(a); ctx.beginPath(); ctx.arc(n.x, n.y, r * a * .7, 0, 7); ctx.fill();
+
+      if (!vertical || n === hover) {
+        ctx.font = `${n.hot ? 600 : 400} 12px "Atkinson Hyperlegible Next", system-ui, sans-serif`;
+        ctx.textAlign = "center";
+        const w = ctx.measureText(n.t).width, ly = n.y + r + 15;
+        ctx.fillStyle = C["--ink"]; ctx.globalAlpha = dim ? .3 : .82; ctx.fillRect(n.x - w / 2 - 4, ly - 11, w + 8, 15);
+        ctx.globalAlpha = dim ? .35 : 1; ctx.fillStyle = n.hot ? mix(Math.max(.75, a)) : C["--fg"]; ctx.fillText(n.t, n.x, ly);
+      }
+      ctx.globalAlpha = 1;
+    });
+
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  function bez(p0, p1, p2, p3, t) { const u = 1 - t; return u * u * u * p0 + 3 * u * u * t * p1 + 3 * u * t * t * p2 + t * t * t * p3; }
+
+  function pick(x, y) { let best = null, bd = 22 * 22; N.forEach(n => { const d = (n.x - x) ** 2 + (n.y - y) ** 2; if (d < bd) { bd = d; best = n; } }); return best; }
+  function showTip(n) {
+    if (!n) { tip.classList.remove("on"); return; }
+    tip.innerHTML = `<span class="label">layer ${n.l} · ${LAYERS[n.l]}</span><strong>${n.t}</strong><br>${n.d}`;
+    const tw = Math.min(260, W - 24);
+    let x = n.x + 16, y = n.y - 10;
+    if (x + tw > W - 8) x = n.x - tw - 16;
+    tip.style.left = Math.max(8, x) + "px"; tip.style.top = Math.max(8, Math.min(y, H - 120)) + "px";
+    tip.classList.add("on");
+  }
+  cv.addEventListener("pointermove", e => {
+    const r = cv.getBoundingClientRect(), n = pick(e.clientX - r.left, e.clientY - r.top);
+    if (n !== hover) { hover = n; showTip(n); if (n) fire(n.id, 1); if (reduce) draw(performance.now()); }
+    cv.style.cursor = n ? "pointer" : "crosshair";
+  });
+  cv.addEventListener("pointerleave", () => { hover = null; showTip(null); if (reduce) draw(performance.now()); });
+  cv.addEventListener("click", e => {
+    const r = cv.getBoundingClientRect(), n = pick(e.clientX - r.left, e.clientY - r.top);
+    if (!n) return;
+    if (e.pointerType === "touch" && hover !== n) { hover = n; showTip(n); fire(n.id, 1); return; } // primer toque: detalle
+    document.querySelector(n.go)?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+  });
+
+  document.querySelectorAll("[data-ask]").forEach(b => b.addEventListener("click", () => {
+    const ids = ASK[b.dataset.ask];
+    focusSet = new Set(); ids.forEach(id => related(id).forEach(x => focusSet.add(x)));
+    ids.forEach(id => fire(id, 1));
+    showTip(byId[ids[0]]);
+    clearTimeout(window.__askT); window.__askT = setTimeout(() => { focusSet = null; if (!hover) showTip(null); if (reduce) draw(performance.now()); }, 4500);
+    if (reduce) draw(performance.now());
+  }));
+
+  // actividad de fondo: la red "piensa" sola desde la capa de entrada
+  if (!reduce) setInterval(() => {
+    if (document.hidden) return;
+    const ins = N.filter(n => n.l === 0); fire(ins[Math.floor(Math.random() * ins.length)].id, .95);
+  }, 1400);
+
+  readColors(); layout();
+  addEventListener("resize", () => { layout(); if (reduce) draw(performance.now()); });
+  if (document.fonts) document.fonts.ready.then(() => { layout(); if (reduce) draw(performance.now()); });
+  if (reduce) { N.filter(n => n.hot).forEach(n => n.a = .9); draw(performance.now()); }
+  else { fire("rock", 1); fire("free", 1); requestAnimationFrame(draw); }
+})();
+</script>
+</body>
+</html>
