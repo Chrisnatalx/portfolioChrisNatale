@@ -2,3 +2,4 @@ build.py
 og/
 .env*
 .gitignore
+node_modules

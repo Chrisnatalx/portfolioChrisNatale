@@ -181,6 +181,11 @@ PAIRS = [
     ('Mi second brain en Discord. Cuando me mencionan, responde con mi voz y una memoria que se mantiene actualizada. Si alguien pide un cambio en un proyecto, lo implementa, pero push, merge y deploy esperan mi aprobación por mensaje.',
      'My second brain on Discord. When someone mentions me, it answers in my voice with a memory that stays up to date. If someone asks for a change to a project, it implements it, but push, merge and deploy wait for my approval by message.'),
     ('<span>Subagentes</span>', '<span>Subagents</span>'),
+    # chat AlterNata
+    ('placeholder="Preguntale a AlterNata sobre Christian: proyectos, stack, CV…" aria-label="Pregunta para AlterNata"', 'placeholder="Ask AlterNata about Christian: projects, stack, CV…" aria-label="Question for AlterNata"'),
+    ('<button type="submit" id="chatBtn">Preguntar</button>', '<button type="submit" id="chatBtn">Ask</button>'),
+    ('AlterNata es un asistente con IA (Claude Haiku 5.5). Solo responde sobre Christian y puede equivocarse.', 'AlterNata is an AI assistant (Claude Haiku 5.5). It only answers about Christian and can make mistakes.'),
+    ('const CHAT_FAIL = "No pude conectarme. Probá de nuevo en un rato o escribile a Christian a natale.christian.a@gmail.com.";', 'const CHAT_FAIL = "I couldn\'t connect. Try again later or email Christian at natale.christian.a@gmail.com.";'),
     ('aria-label="Descargar CV en PDF">CV ↓<', 'aria-label="Download CV as PDF (Spanish)">CV ↓<'),
     ('>Descargar CV <span class="mono">PDF · 2 págs</span>', '>Download CV <span class="mono">PDF · Spanish</span>'),
     ('Una sesión de Claude Code conectada a Discord con Channels. Funciona como despachador: clasifica cada pedido y delega el trabajo pesado a subagentes en worktrees. Solo ve la carpeta de proyectos de mi PC, la memoria es markdown versionado en git y trata cualquier instrucción dentro de un mensaje, PR o archivo como dato, no como orden.',
