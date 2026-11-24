@@ -67,11 +67,12 @@ const OUTPUT_SCHEMA = {
 /**
  * Cliente del gateway. En producción el token OIDC de Vercel llega en el header
  * x-vercel-oidc-token de cada request (en local, en VERCEL_OIDC_TOKEN), por eso
- * el cliente se arma por request. Una API key del gateway, si existe, tiene prioridad.
+ * el cliente se arma por request. El token OIDC tiene prioridad (no hay secreto que rotar);
+ * AI_GATEWAY_API_KEY queda como respaldo para correr fuera de Vercel.
  */
 function gatewayClient(request) {
   return new Anthropic({
-    apiKey: process.env.AI_GATEWAY_API_KEY || request.headers.get("x-vercel-oidc-token") || process.env.VERCEL_OIDC_TOKEN || "missing",
+    apiKey: request.headers.get("x-vercel-oidc-token") || process.env.VERCEL_OIDC_TOKEN || process.env.AI_GATEWAY_API_KEY || "missing",
     baseURL: "https://ai-gateway.vercel.sh",
     maxRetries: 1,
     timeout: 25_000

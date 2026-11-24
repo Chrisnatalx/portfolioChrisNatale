@@ -42,7 +42,7 @@ Para probar el chat en local hace falta `vercel dev` (Vercel CLI) con `AI_GATEWA
 - **Entrada:** `{ messages: [{ role: "user" | "assistant", content: string }], lang: "es" | "en" }`
 - **Salida:** `{ answer: string, nodes: string[] }`. `nodes` son ids de `NODES` que el front ilumina en la red. Si se agotaron los créditos del gateway: `{ answer, nodes: [], outOfCredits: true }`.
 - **Límites:** 12 mensajes de historial, 600 caracteres por mensaje del visitante, 20 mensajes por IP cada 10 minutos (en memoria, por instancia: es de mejor esfuerzo; el tope real de gasto es el presupuesto del gateway).
-- **Credenciales:** `AI_GATEWAY_API_KEY` (variable de entorno del proyecto en Vercel, marcada como Sensitive). Si no existe, usa el token OIDC del header `x-vercel-oidc-token`. Nunca poner la key en el repo ni en el HTML.
+- **Credenciales:** primero el token OIDC que Vercel manda en el header `x-vercel-oidc-token` (sin secretos que guardar); `AI_GATEWAY_API_KEY` queda de respaldo para correr fuera de Vercel. Nunca poner la key en el repo ni en el HTML.
 - **Comportamiento pedido:** responde en tercera persona, solo sobre Christian; si no hay créditos dice que se quedó sin créditos.
 - **UI:** widget flotante abajo a la derecha (`#anFab` abre/cierra `#anPanel`; Escape cierra).
 
