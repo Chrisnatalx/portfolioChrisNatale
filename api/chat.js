@@ -63,12 +63,19 @@ const OUTPUT_SCHEMA = {
   additionalProperties: false
 };
 
-const client = new Anthropic({
-  apiKey: process.env.AI_GATEWAY_API_KEY || process.env.VERCEL_OIDC_TOKEN,
-  baseURL: "https://ai-gateway.vercel.sh",
-  maxRetries: 1,
-  timeout: 25_000
-});
+/**
+ * Cliente del gateway. En producción el token OIDC de Vercel llega en el header
+ * x-vercel-oidc-token de cada request (en local, en VERCEL_OIDC_TOKEN), por eso
+ * el cliente se arma por request. Una API key del gateway, si existe, tiene prioridad.
+ */
+function gatewayClient(request) {
+  return new Anthropic({
+    apiKey: process.env.AI_GATEWAY_API_KEY || request.headers.get("x-vercel-oidc-token") || process.env.VERCEL_OIDC_TOKEN || "missing",
+    baseURL: "https://ai-gateway.vercel.sh",
+    maxRetries: 1,
+    timeout: 25_000
+  });
+}
 
 // Límite por IP en memoria. Es de mejor esfuerzo: cada instancia de la función
 // tiene su propio contador. El tope real de gasto lo pone el presupuesto del gateway.
@@ -125,7 +132,7 @@ export async function POST(request) {
   if (!messages) return json({ answer: t.bad, nodes: [] }, 400);
 
   try {
-    const response = await client.messages.create({
+    const response = await gatewayClient(request).messages.create({
       model: MODEL,
       max_tokens: 1024,
       system: [{ type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } }],
