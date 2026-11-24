@@ -2,7 +2,7 @@
  * POST /api/chat — AlterNata, el asistente del portfolio.
  *
  * Responde preguntas sobre Christian Natale (carrera, proyectos, CV) usando solo
- * la base de conocimiento de _knowledge.js. Llama a Claude Haiku 5.5 a través de
+ * la base de conocimiento de _knowledge.js. Llama a Gemini 2.5 Flash Lite a través de
  * Vercel AI Gateway con el SDK oficial de Anthropic.
  *
  * Entrada:  { messages: [{ role: "user"|"assistant", content: string }], lang: "es"|"en" }
@@ -15,7 +15,8 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { KNOWLEDGE, NODES } from "./_knowledge.js";
 
-const MODEL = "anthropic/claude-haiku-5.5";
+// Modelo del plan gratis de AI Gateway (Claude no entra en ese plan). Se puede cambiar con AI_GATEWAY_MODEL.
+const MODEL = process.env.AI_GATEWAY_MODEL || "google/gemini-2.5-flash-lite";
 const MAX_TURNS = 12;          // mensajes de historial que se aceptan
 const MAX_CHARS = 600;         // largo máximo de cada mensaje del visitante
 const RATE_LIMIT = 20;         // mensajes por IP…
@@ -137,7 +138,7 @@ export async function POST(request) {
       model: MODEL,
       max_tokens: 1024,
       system: [{ type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } }],
-      output_config: { effort: "low", format: { type: "json_schema", schema: OUTPUT_SCHEMA } },
+      output_config: { format: { type: "json_schema", schema: OUTPUT_SCHEMA } },
       messages
     });
 

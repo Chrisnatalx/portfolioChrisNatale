@@ -9,7 +9,7 @@ Sitio personal con forma de red neuronal: cada nodo del hero es un dato real de 
 
 - HTML, CSS y JavaScript sin framework ni bundler. Todo el front vive en un solo archivo por idioma.
 - Red neuronal dibujada con Canvas 2D (sin librerías).
-- Función serverless en Node.js (`api/chat.js`) con `@anthropic-ai/sdk` apuntando a Vercel AI Gateway (`https://ai-gateway.vercel.sh`), modelo `anthropic/claude-haiku-5.5`.
+- Función serverless en Node.js (`api/chat.js`) con `@anthropic-ai/sdk` apuntando a Vercel AI Gateway (`https://ai-gateway.vercel.sh`), modelo `google/gemini-2.5-flash-lite` (plan gratis del gateway; configurable con `AI_GATEWAY_MODEL`).
 - Python 3 solo para generar la versión en inglés (`build.py`).
 
 ## Mapa de archivos

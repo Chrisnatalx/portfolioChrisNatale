@@ -225,7 +225,7 @@ PAIRS = [
     ('aria-label="Cerrar chat"', 'aria-label="Close chat"'),
     ('¡Hola! Soy AlterNata, el asistente de Christian. Preguntame por sus proyectos, su stack o su experiencia.', 'Hi! I\'m AlterNata, Christian\'s assistant. Ask me about his projects, his stack or his experience.'),
     ('<button class="chip" type="button">¿Cómo lo contacto?</button>', '<button class="chip" type="button">How can I contact him?</button>'),
-    ('AlterNata es un asistente con IA (Claude Haiku 5.5). Solo responde sobre Christian y puede equivocarse.', 'AlterNata is an AI assistant (Claude Haiku 5.5). It only answers about Christian and can make mistakes.'),
+    ('AlterNata es un asistente con IA (Gemini 2.5 Flash Lite). Solo responde sobre Christian y puede equivocarse.', 'AlterNata is an AI assistant (Gemini 2.5 Flash Lite). It only answers about Christian and can make mistakes.'),
     ('const CHAT_FAIL = "No pude conectarme. Probá de nuevo en un rato o escribile a Christian a natale.christian.a@gmail.com.";', 'const CHAT_FAIL = "I couldn\'t connect. Try again later or email Christian at natale.christian.a@gmail.com.";'),
     ('aria-label="Descargar CV en PDF">CV ↓<', 'aria-label="Download CV as PDF (Spanish)">CV ↓<'),
     ('>Descargar CV <span class="mono">PDF · 2 págs</span>', '>Download CV <span class="mono">PDF · Spanish</span>'),
