@@ -271,7 +271,15 @@ h1, h2, h3 { font-family: var(--f-display); font-weight: 500; line-height: 1.08;
   background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 0%), var(--glow), transparent 70%); }
 .proj:hover::before { opacity: 1; }
 .proj:hover { border-color: color-mix(in srgb, var(--act-mid) 60%, var(--line)); box-shadow: 0 0 0 6px var(--glow); }
-.proj.feature:first-child { border-color: color-mix(in srgb, var(--act-mid) 40%, var(--line)); }
+.proj:first-child { border-color: color-mix(in srgb, var(--act-mid) 40%, var(--line)); }
+/* proyectos con demo: texto y material lado a lado, alternando */
+.proj.case { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 1.8rem; align-items: start; }
+.proj.case.flip { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); }
+.proj.case.flip .case-media { order: -1; }
+.case-text, .case-media { display: flex; flex-direction: column; gap: .9rem; min-width: 0; }
+/* proyectos sin material: tarjetas compactas */
+.proj.mini { padding: 1.2rem; gap: .7rem; align-self: start; }
+.proj.mini h3 { font-size: var(--step-1); }
 .proj.feature { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 1.6rem; }
 .proj-top { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; flex-wrap: wrap; }
 .proj h3 { font-size: var(--step-2); }
@@ -344,7 +352,8 @@ footer { border-top: 1px solid var(--line); padding-block: 1.6rem 2.4rem; color:
 footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 
 @media (max-width: 860px) {
-  .hero-head, .layer-head, .layer-body, .output, .proj.feature { grid-template-columns: minmax(0, 1fr); }
+  .hero-head, .layer-head, .layer-body, .output, .proj.feature, .proj.case, .proj.case.flip { grid-template-columns: minmax(0, 1fr); }
+  .proj.case.flip .case-media { order: 0; }
   .layer-head { gap: 1rem; }
   .layer-body > :first-child:empty { display: none; }
   .projects { grid-template-columns: minmax(0, 1fr); }
@@ -588,20 +597,20 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
       </div>
       <div class="projects">
 
-        <article class="proj feature" id="p-whatsapp" style="--act-c: var(--act-hi)">
-          <div style="display:flex;flex-direction:column;gap:.9rem;min-width:0">
+        <article class="proj case" id="p-whatsapp" style="--act-c: var(--act-hi)">
+          <div class="case-text">
             <div class="proj-top"><span class="label">Bravía Kombucha · in production</span></div>
             <h3>WhatsApp agent connected to Odoo</h3>
             <p>WhatsApp customer service for Bravía Kombucha, which runs on Odoo. The agent answers FAQs, looks up users and orders in Odoo, and hands the conversation to a person when needed.</p>
             <p class="ai"><span class="label">where the AI is</span>LLM with its own system prompt and RAG for FAQs, human escalation, WhatsApp's 24 h window, live updates over SSE, and an email alert when model credits run out.</p>
-            <div class="tags"><span>WhatsApp Cloud API</span><span>Odoo</span><span>OpenAI</span><span>LangChain</span><span>Node.js</span><span>n8n</span></div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:1rem;min-width:0">
             <div class="metrics">
               <div class="metric"><div class="v">79%</div><div class="k">of conversations resolved with no human involved</div></div>
               <div class="metric" style="--act-c: var(--act-mid)"><div class="v">223</div><div class="k">of my PRs across backend and frontend</div></div>
             </div>
+            <div class="tags"><span>WhatsApp Cloud API</span><span>Odoo</span><span>OpenAI</span><span>LangChain</span><span>Node.js</span><span>n8n</span></div>
             <span class="src">source: CV (79%) · GitHub, Nov 2026 (PRs)</span>
+          </div>
+          <div class="case-media">
             <figure class="demo">
               <button class="zoom" type="button">enlarge ⤢</button>
               <video width="1280" height="558" muted loop playsinline preload="none" poster="../assets/video/bravia-whatsapp.jpg" aria-label="Demo of Bravía's agent: a customer writes on WhatsApp, the bot answers and hands off to a person when asked"><source src="../assets/video/bravia-whatsapp.webm" type="video/webm"><source src="../assets/video/bravia-whatsapp.mp4" type="video/mp4"></video>
@@ -610,28 +619,95 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
           </div>
         </article>
 
-        <article class="proj feature" id="p-docs" style="--act-c: var(--act-hi)">
-          <div style="display:flex;flex-direction:column;gap:.9rem;min-width:0">
+        <article class="proj case flip" id="p-docs" style="--act-c: var(--act-hi)">
+          <div class="case-text">
             <div class="proj-top"><span class="label">Globalex · foreign trade</span></div>
             <h3>Customs document review with agents</h3>
             <p>A platform for Globalex, a customs broker. It reads invoices, packing lists, air waybills and customs declarations, cross-checks data between documents and raises alerts when something doesn't match.</p>
             <p class="ai"><span class="label">where the AI is</span>Three agents: document extractor, semantic checker and Gmail intake. OCR with Document AI, output contracts with retries, and an offline eval harness to compare models (Haiku as primary, Sonnet for long documents).</p>
-            <div class="tags"><span>Python</span><span>Pydantic</span><span>Claude</span><span>Document AI</span><span>Node.js</span><span>PostgreSQL</span><span>PostHog</span></div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:1rem;min-width:0">
             <div class="metrics">
               <div class="metric"><div class="v">3</div><div class="k">agents in the pipeline</div></div>
               <div class="metric"><div class="v">211/211</div><div class="k">agent suite tests passing</div></div>
               <div class="metric" style="--act-c: var(--act-mid)"><div class="v">34</div><div class="k">real documents scored against verified values</div></div>
               <div class="metric" style="--act-c: var(--act-mid)"><div class="v">228</div><div class="k">of my PRs across front, back and agents</div></div>
             </div>
+            <div class="tags"><span>Python</span><span>Pydantic</span><span>Claude</span><span>Document AI</span><span>Node.js</span><span>PostgreSQL</span><span>PostHog</span></div>
             <span class="src">source: eval QA from 2026-10-16 and GitHub, Nov 2026</span>
+          </div>
+          <div class="case-media">
             <figure class="demo">
               <button class="zoom" type="button">enlarge ⤢</button>
               <video width="1280" height="800" muted loop playsinline preload="none" poster="../assets/media/globalex-demo.jpg" aria-label="Globalex demo: operations list, cross-document alerts and review of extracted fields with their confidence"><source src="../assets/media/globalex-demo.webm" type="video/webm"><source src="../assets/media/globalex-demo.mp4" type="video/mp4"></video>
               <figcaption>Stage demo with client data pixelated.</figcaption>
             </figure>
             <div class="shots"><button type="button" data-full="../assets/media/globalex-1-operaciones.webp"><img src="../assets/media/globalex-1-operaciones-sm.webp" alt="Globalex operations list with validation status and alerts" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/globalex-2-alertas.webp"><img src="../assets/media/globalex-2-alertas-sm.webp" alt="Cross-check alerts: the included adjustment doesn't match the expected value" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/globalex-3-extraccion.webp"><img src="../assets/media/globalex-3-extraccion-sm.webp" alt="Invoice review: AI-extracted fields with confidence percentage" loading="lazy" width="480" height="300"></button></div>
+          </div>
+        </article>
+
+        <article class="proj case" id="p-estima" style="--act-c: var(--act-hi)">
+          <div class="case-text">
+            <div class="proj-top"><span class="label">my own project · in production</span></div>
+            <h3>Estima</h3>
+            <p>I started it on my own in December 2025: project estimation and management with tasks, hours, versions and helpdesk. I showed it to the team, they liked it, and in February we put it in production and retired Jira.</p>
+            <p class="ai"><span class="label">where the AI is</span>MCP server with personal tokens, so Claude can log and query hours and tasks directly. Used by people and agents.</p>
+            <div class="metrics">
+              <div class="metric"><div class="v">Jira</div><div class="k">replaced: the team now works in Estima</div></div>
+              <div class="metric" style="--act-c: var(--act-mid)"><div class="v">2 months</div><div class="k">from my own idea to production</div></div>
+              <div class="metric" style="--act-c: var(--act-lo)"><div class="v">123</div><div class="k">PRs across frontend and backend</div></div>
+            </div>
+            <div class="tags"><span>MCP</span><span>Node.js</span><span>React</span><span>Discord</span></div>
+            <span class="src">source: Christian · GitHub, Nov 2026</span>
+          </div>
+          <div class="case-media">
+            <figure class="demo">
+              <button class="zoom" type="button">enlarge ⤢</button>
+              <video width="1280" height="800" muted loop playsinline preload="none" poster="../assets/media/estima-demo.jpg" aria-label="Estima demo: estimated vs executed hours dashboard, human and agent board, and MCP access"><source src="../assets/media/estima-demo.webm" type="video/webm"><source src="../assets/media/estima-demo.mp4" type="video/mp4"></video>
+              <figcaption>Estima in production; team members pixelated.</figcaption>
+            </figure>
+            <div class="shots"><button type="button" data-full="../assets/media/estima-1-dashboard.webp"><img src="../assets/media/estima-1-dashboard-sm.webp" alt="Project dashboard: estimated vs executed hours and agent hours" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/estima-2-kanban.webp"><img src="../assets/media/estima-2-kanban-sm.webp" alt="Sprint board with human and agent view" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/estima-3-tarea.webp"><img src="../assets/media/estima-3-tarea-sm.webp" alt="Task detail with estimated hours for human and agent" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/estima-4-mcp.webp"><img src="../assets/media/estima-4-mcp-sm.webp" alt="Personal token generator for the MCP server" loading="lazy" width="480" height="300"></button></div>
+          </div>
+        </article>
+
+        <article class="proj case flip" id="p-realtor" style="--act-c: var(--act-mid)">
+          <div class="case-text">
+            <div class="proj-top"><span class="label">proptech · built from scratch</span></div>
+            <h3>RealtorMatch</h3>
+            <p>Property appraisals in Buenos Aires that match sellers with the right real estate agent. I built it from scratch: backend, app, landing page and bot.</p>
+            <p class="ai"><span class="label">where the AI is</span>Open-conversation WhatsApp bot, a data extractor, and AI-written reports with output guardrails.</p>
+            <div class="metrics">
+              <div class="metric"><div class="v">180</div><div class="k">PRs across app, backend and landing</div></div>
+              <div class="metric" style="--act-c: var(--act-lo)"><div class="v">GA4</div><div class="k">signup funnel measured end to end</div></div>
+            </div>
+            <div class="tags"><span>Next.js</span><span>Express</span><span>TypeORM</span><span>WhatsApp</span><span>MiniMax</span></div>
+            <span class="src">source: GitHub, Nov 2026</span>
+          </div>
+          <div class="case-media">
+            <figure class="demo">
+              <button class="zoom" type="button">enlarge ⤢</button>
+              <video width="1280" height="800" muted loop playsinline preload="none" poster="../assets/media/realtormatch-app.jpg" aria-label="RealtorMatch demo: appraisal detail, comparables breakdown and AI-written report"><source src="../assets/media/realtormatch-app.webm" type="video/webm"><source src="../assets/media/realtormatch-app.mp4" type="video/mp4"></video>
+              <figcaption>Real demo; the property address is pixelated.</figcaption>
+            </figure>
+            <div class="shots"><button type="button" data-full="../assets/media/realtormatch-1-landing.webp"><img src="../assets/media/realtormatch-1-landing-sm.webp" alt="RealtorMatch landing: matching with agents" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/realtormatch-2-informe.webp"><img src="../assets/media/realtormatch-2-informe-sm.webp" alt="Cover of the generated appraisal report" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/realtormatch-3-comparables.webp"><img src="../assets/media/realtormatch-3-comparables-sm.webp" alt="Market comparables sorted by value per square meter" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/realtormatch-4-valuacion.webp"><img src="../assets/media/realtormatch-4-valuacion-sm.webp" alt="Valuation and suggested price in the report" loading="lazy" width="480" height="300"></button></div>
+          </div>
+        </article>
+
+        <article class="proj case" id="p-sarapura" style="--act-c: var(--act-mid)">
+          <div class="case-text">
+            <div class="proj-top"><span class="label">Sarapura · event quoting</span></div>
+            <h3>Sarapura quoting engine</h3>
+            <p>Sarapura provides lighting, sound and effects for events. The team builds proposals by venue, dance floor and pack, with per-item margin and rounded prices, and the client gets a page where they add extras and accept the proposal.</p>
+            <div class="metrics">
+              <div class="metric"><div class="v">80</div><div class="k">PRs across frontend and backend</div></div>
+            </div>
+            <span class="src">source: GitHub, Nov 2026</span>
+          </div>
+          <div class="case-media">
+            <figure class="demo">
+              <button class="zoom" type="button">enlarge ⤢</button>
+              <video width="1280" height="800" muted loop playsinline preload="none" poster="../assets/media/sarapura-demo.jpg" aria-label="Sarapura demo: building a proposal live and the page the client receives"><source src="../assets/media/sarapura-demo.webm" type="video/webm"><source src="../assets/media/sarapura-demo.mp4" type="video/mp4"></video>
+              <figcaption>Stage demo; client names and commissions left out.</figcaption>
+            </figure>
+            <div class="shots"><button type="button" data-full="../assets/media/sarapura-1-armado.webp"><img src="../assets/media/sarapura-1-armado-sm.webp" alt="Building a proposal with per-item margin and live total" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/sarapura-2-propuesta-cliente.webp"><img src="../assets/media/sarapura-2-propuesta-cliente-sm.webp" alt="Cover of the proposal the client receives" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/sarapura-3-adicionales.webp"><img src="../assets/media/sarapura-3-adicionales-sm.webp" alt="Add-ons the client can include in their event" loading="lazy" width="480" height="300"></button></div>
           </div>
         </article>
 
@@ -654,75 +730,16 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
           </div>
         </article>
 
-        <article class="proj" id="p-estima" style="--act-c: var(--act-hi)">
-          <div class="proj-top"><span class="label">my own project · in production</span></div>
-          <h3>Estima</h3>
-          <p>I started it on my own in December 2025: project estimation and management with tasks, hours, versions and helpdesk. I showed it to the team, they liked it, and in February we put it in production and retired Jira.</p>
-          <p class="ai"><span class="label">where the AI is</span>MCP server with personal tokens, so Claude can log and query hours and tasks directly. Used by people and agents.</p>
-          <div class="metrics">
-            <div class="metric"><div class="v">Jira</div><div class="k">replaced: the team now works in Estima</div></div>
-            <div class="metric" style="--act-c: var(--act-mid)"><div class="v">2 months</div><div class="k">from my own idea to production</div></div>
-            <div class="metric" style="--act-c: var(--act-lo)"><div class="v">123</div><div class="k">PRs across frontend and backend</div></div>
-          </div>
-          <div class="tags"><span>MCP</span><span>Node.js</span><span>React</span><span>Discord</span></div>
-          <figure class="demo">
-              <button class="zoom" type="button">enlarge ⤢</button>
-              <video width="1280" height="800" muted loop playsinline preload="none" poster="../assets/media/estima-demo.jpg" aria-label="Estima demo: estimated vs executed hours dashboard, human and agent board, and MCP access"><source src="../assets/media/estima-demo.webm" type="video/webm"><source src="../assets/media/estima-demo.mp4" type="video/mp4"></video>
-              <figcaption>Estima in production; team members pixelated.</figcaption>
-            </figure>
-            <div class="shots"><button type="button" data-full="../assets/media/estima-1-dashboard.webp"><img src="../assets/media/estima-1-dashboard-sm.webp" alt="Project dashboard: estimated vs executed hours and agent hours" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/estima-2-kanban.webp"><img src="../assets/media/estima-2-kanban-sm.webp" alt="Sprint board with human and agent view" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/estima-3-tarea.webp"><img src="../assets/media/estima-3-tarea-sm.webp" alt="Task detail with estimated hours for human and agent" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/estima-4-mcp.webp"><img src="../assets/media/estima-4-mcp-sm.webp" alt="Personal token generator for the MCP server" loading="lazy" width="480" height="300"></button></div>
-          <span class="src">source: Christian · GitHub, Nov 2026</span>
-        </article>
-
-        <article class="proj" id="p-realtor" style="--act-c: var(--act-mid)">
-          <div class="proj-top"><span class="label">proptech · built from scratch</span></div>
-          <h3>RealtorMatch</h3>
-          <p>Property appraisals in Buenos Aires that match sellers with the right real estate agent. I built it from scratch: backend, app, landing page and bot.</p>
-          <p class="ai"><span class="label">where the AI is</span>Open-conversation WhatsApp bot, a data extractor, and AI-written reports with output guardrails.</p>
-          <div class="metrics">
-            <div class="metric"><div class="v">180</div><div class="k">PRs across app, backend and landing</div></div>
-            <div class="metric" style="--act-c: var(--act-lo)"><div class="v">GA4</div><div class="k">signup funnel measured end to end</div></div>
-          </div>
-          <div class="tags"><span>Next.js</span><span>Express</span><span>TypeORM</span><span>WhatsApp</span><span>MiniMax</span></div>
-          <figure class="demo">
-              <button class="zoom" type="button">enlarge ⤢</button>
-              <video width="1280" height="800" muted loop playsinline preload="none" poster="../assets/media/realtormatch-app.jpg" aria-label="RealtorMatch demo: appraisal detail, comparables breakdown and AI-written report"><source src="../assets/media/realtormatch-app.webm" type="video/webm"><source src="../assets/media/realtormatch-app.mp4" type="video/mp4"></video>
-              <figcaption>Real demo; the property address is pixelated.</figcaption>
-            </figure>
-            <div class="shots"><button type="button" data-full="../assets/media/realtormatch-1-landing.webp"><img src="../assets/media/realtormatch-1-landing-sm.webp" alt="RealtorMatch landing: matching with agents" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/realtormatch-2-informe.webp"><img src="../assets/media/realtormatch-2-informe-sm.webp" alt="Cover of the generated appraisal report" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/realtormatch-3-comparables.webp"><img src="../assets/media/realtormatch-3-comparables-sm.webp" alt="Market comparables sorted by value per square meter" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/realtormatch-4-valuacion.webp"><img src="../assets/media/realtormatch-4-valuacion-sm.webp" alt="Valuation and suggested price in the report" loading="lazy" width="480" height="300"></button></div>
-          <span class="src">source: GitHub, Nov 2026</span>
-        </article>
-
-
-
-        <article class="proj" id="p-sarapura" style="--act-c: var(--act-mid)">
-          <div class="proj-top"><span class="label">Sarapura · event quoting</span></div>
-          <h3>Sarapura quoting engine</h3>
-          <p>Sarapura provides lighting, sound and effects for events. The team builds proposals by venue, dance floor and pack, with per-item margin and rounded prices, and the client gets a page where they add extras and accept the proposal.</p>
-          <div class="metrics">
-            <div class="metric"><div class="v">80</div><div class="k">PRs across frontend and backend</div></div>
-          </div>
-          <figure class="demo">
-              <button class="zoom" type="button">enlarge ⤢</button>
-              <video width="1280" height="800" muted loop playsinline preload="none" poster="../assets/media/sarapura-demo.jpg" aria-label="Sarapura demo: building a proposal live and the page the client receives"><source src="../assets/media/sarapura-demo.webm" type="video/webm"><source src="../assets/media/sarapura-demo.mp4" type="video/mp4"></video>
-              <figcaption>Stage demo; client names and commissions left out.</figcaption>
-            </figure>
-            <div class="shots"><button type="button" data-full="../assets/media/sarapura-1-armado.webp"><img src="../assets/media/sarapura-1-armado-sm.webp" alt="Building a proposal with per-item margin and live total" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/sarapura-2-propuesta-cliente.webp"><img src="../assets/media/sarapura-2-propuesta-cliente-sm.webp" alt="Cover of the proposal the client receives" loading="lazy" width="480" height="300"></button><button type="button" data-full="../assets/media/sarapura-3-adicionales.webp"><img src="../assets/media/sarapura-3-adicionales-sm.webp" alt="Add-ons the client can include in their event" loading="lazy" width="480" height="300"></button></div>
-          <span class="src">source: GitHub, Nov 2026</span>
-        </article>
-
-        <article class="proj" id="p-accel" style="--act-c: var(--act-lo)">
+        <article class="proj mini" id="p-accel" style="--act-c: var(--act-lo)">
           <div class="proj-top"><span class="label">platform · base of every product</span></div>
           <h3>MVP Accelerator</h3>
-          <p>The framework every product is built on: auth, multi-tenancy, S3 storage and an LLM model factory.</p>
           <div class="metrics">
             <div class="metric"><div class="v">79</div><div class="k">PRs to the base framework</div></div>
           </div>
-          <div class="tags"><span>TypeScript</span><span>LangChain</span><span>React</span><span>PostgreSQL</span></div>
           <span class="src">source: GitHub, Nov 2026</span>
         </article>
 
-        <article class="proj" id="p-alter" style="--act-c: var(--act-hi)">
+        <article class="proj mini" id="p-alter" style="--act-c: var(--act-hi)">
           <div class="proj-top"><span class="label">personal project · open source</span><a class="mono" href="https://github.com/Chrisnatalx/Alter" target="_blank" rel="noopener">view repo ↗</a></div>
           <h3>Alter</h3>
           <p>A voice assistant on Claude that handles Gmail, Calendar, Drive and GitHub. It also responds to hand gestures.</p>
