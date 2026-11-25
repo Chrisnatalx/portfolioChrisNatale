@@ -21,7 +21,7 @@ export const KNOWLEDGE = `
 ## Trayectoria
 - 2021: primeros repos públicos en GitHub (tiendas, apps en React, cursos full stack).
 - Mar 2022 – hoy: Desarrollador Freelance (autónomo). Software para distintos clientes como líder técnico y en frontend y backend; definición de soluciones, decisiones técnicas y planificación; workflows y automatizaciones para procesos internos.
-- Dic 2023 – sep 2025: Técnico de Software en Fractial Systems. Soporte y resolución de incidencias en entornos corporativos de múltiples clientes, análisis de fallas y mejoras en los procesos de implementación, diagnóstico con usuarios y reporte estructurado al equipo de desarrollo.
+- Dic 2023 – sep 2025: Técnico de Software en Fractalia Systems. Soporte y resolución de incidencias en entornos corporativos de múltiples clientes, análisis de fallas y mejoras en los procesos de implementación, diagnóstico con usuarios y reporte estructurado al equipo de desarrollo.
 - Dic 2024 – hoy: AI Engineer en Rocking Product, una empresa que construye software para clientes.
   - 1028 pull requests en 29 repositorios de la organización, más de 850 solo en 2026.
   - Agente de WhatsApp conectado a Odoo que resolvió el 79% de las conversaciones sin intervención humana.
@@ -79,7 +79,7 @@ Los clientes son confidenciales: NUNCA digas sus nombres; si preguntan quiénes 
  * El modelo elige de esta lista qué nodos iluminar al responder.
  */
 export const NODES = {
-  y21: "2021, primeros repos", free: "Freelance", fract: "Fractial Systems", rock: "Rocking Product", uai: "UAI, estudios",
+  y21: "2021, primeros repos", free: "Freelance", fract: "Fractalia Systems", rock: "Rocking Product", uai: "UAI, estudios",
   ts: "TypeScript", node: "Node.js", react: "React y Next.js", py: "Python", pg: "PostgreSQL", ops: "Docker, DigitalOcean, deploy",
   llm: "LLMs", agt: "agentes", rag: "RAG", ext: "extracción de documentos", eval: "evals", auto: "n8n y automatizaciones",
   mem: "memoria persistente", mcp: "MCP y Claude Code",
