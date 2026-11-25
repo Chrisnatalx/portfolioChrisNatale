@@ -50,7 +50,7 @@ Para probar el chat en local hace falta `vercel dev` (Vercel CLI) con `AI_GATEWA
 
 1. **Editar solo `index.html`** y después correr `python3 build.py`. Si el build falla, agregar o actualizar el par correspondiente en `build.py`.
 2. **Si cambia el contenido del sitio** (proyectos, cifras, cargo), actualizar también `api/_knowledge.js` para que AlterNata no quede desactualizado.
-3. **Clientes con nombre (autorizado):** Bravía Kombucha, Globalex, RealtorMatch y Sarapura se pueden nombrar. Los datos de terceros (clientes finales, teléfonos, mensajes) se tapan siempre en videos e imágenes.
+3. **Clientes anónimos:** desde el 2026-11-25 no se nombra a ningún cliente (pedido de Christian); se describen por rubro. Los datos de terceros (clientes finales, teléfonos, mensajes) se tapan siempre en videos e imágenes.
 4. **Cargo:** "AI Engineer" en todo el sitio.
 5. **Temas:** los colores son tokens en `:root` (oscuro por defecto) y se redefinen para claro en `@media (prefers-color-scheme: light)` y en `:root[data-theme="light"]`. Cambiar ambos bloques juntos.
 6. **Respetar `prefers-reduced-motion`:** toda animación nueva necesita su versión sin movimiento. El motion actual (sin librerías): cambio de tema con View Transitions, barra de progreso `.fp`, entrada escalonada de bloques (`.js-rv` / `.rv`), cifras de `.metric .v` que cuentan desde 0, luz que sigue al cursor en `.proj` (`--mx`/`--my`) y puntos de "pensando" en el chat. No se usa three.js a propósito, para cuidar el peso.

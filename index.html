@@ -610,9 +610,9 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
 
         <article class="proj case" id="p-whatsapp" style="--act-c: var(--act-hi)">
           <div class="case-text">
-            <div class="proj-top"><span class="label">Bravía Kombucha · en producción</span></div>
+            <div class="proj-top"><span class="label">Marca de bebidas · en producción</span></div>
             <h3>Agente de WhatsApp conectado a Odoo</h3>
-            <p>Atención al cliente por WhatsApp para Bravía Kombucha, que opera sobre Odoo. El agente responde preguntas frecuentes, consulta usuarios y pedidos en Odoo y pasa la conversación a una persona cuando hace falta.</p>
+            <p>Atención al cliente por WhatsApp para una marca de bebidas que opera sobre Odoo. El agente responde preguntas frecuentes, consulta usuarios y pedidos en Odoo y pasa la conversación a una persona cuando hace falta.</p>
             <p class="ai"><span class="label">dónde está la IA</span>LLM con system prompt propio y RAG para FAQs, escalado a humano, ventana de 24 h de WhatsApp, actualizaciones en vivo por SSE y alerta por mail cuando se agotan los créditos del modelo.</p>
             <div class="metrics">
               <div class="metric"><div class="v">79%</div><div class="k">de las conversaciones resueltas sin intervención humana</div></div>
@@ -624,17 +624,17 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
           <div class="case-media">
             <figure class="demo">
               <button class="zoom" type="button">ampliar ⤢</button>
-              <video width="1280" height="558" muted loop playsinline preload="none" poster="assets/video/bravia-whatsapp.webp" aria-label="Demo del agente de Bravía: un cliente escribe por WhatsApp, el bot responde y deriva a una persona cuando se lo piden"><source src="assets/video/bravia-whatsapp.webm" type="video/webm"><source src="assets/video/bravia-whatsapp.mp4" type="video/mp4"></video>
-              <figcaption>Demo real: WhatsApp a la izquierda, panel de Bravía a la derecha. Acelerado 2×.</figcaption>
+              <video width="1280" height="558" muted loop playsinline preload="none" poster="assets/video/agente-whatsapp.webp" aria-label="Demo del agente: un cliente escribe por WhatsApp, el bot responde y deriva a una persona cuando se lo piden"><source src="assets/video/agente-whatsapp.webm" type="video/webm"><source src="assets/video/agente-whatsapp.mp4" type="video/mp4"></video>
+              <figcaption>Demo real: WhatsApp a la izquierda, panel de atención a la derecha. Acelerado 2×.</figcaption>
             </figure>
           </div>
         </article>
 
         <article class="proj case flip" id="p-docs" style="--act-c: var(--act-hi)">
           <div class="case-text">
-            <div class="proj-top"><span class="label">Globalex · comercio exterior</span></div>
+            <div class="proj-top"><span class="label">Comercio exterior · despachante</span></div>
             <h3>Revisión de documentos aduaneros con agentes</h3>
-            <p>Plataforma para Globalex, despachante de comercio exterior. Lee facturas, packing lists, guías aéreas y despachos, cruza los datos entre documentos y genera alertas cuando algo no cierra.</p>
+            <p>Plataforma para un despachante de comercio exterior. Lee facturas, packing lists, guías aéreas y despachos, cruza los datos entre documentos y genera alertas cuando algo no cierra.</p>
             <p class="ai"><span class="label">dónde está la IA</span>Tres agentes: extractor de documentos, verificador semántico e ingesta de correos de Gmail. OCR con Document AI, contratos de salida con reintentos y un harness de evals offline para comparar modelos (Haiku como principal, Sonnet para documentos largos).</p>
             <div class="metrics">
               <div class="metric"><div class="v">3</div><div class="k">agentes en el pipeline</div></div>
@@ -644,14 +644,6 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
             </div>
             <div class="tags"><span>Python</span><span>Pydantic</span><span>Claude</span><span>Document AI</span><span>Node.js</span><span>PostgreSQL</span><span>PostHog</span></div>
             <span class="src">fuente: QA de evals del 16/10/2026 y GitHub, nov 2026</span>
-          </div>
-          <div class="case-media">
-            <figure class="demo">
-              <button class="zoom" type="button">ampliar ⤢</button>
-              <video width="1280" height="800" muted loop playsinline preload="none" poster="assets/media/globalex-demo.webp" aria-label="Demo de Globalex: lista de operaciones, alertas de cruce entre documentos y revisión de campos extraídos con su confianza"><source src="assets/media/globalex-demo.webm" type="video/webm"><source src="assets/media/globalex-demo.mp4" type="video/mp4"></video>
-              <figcaption>Demo en stage con datos de clientes pixelados.</figcaption>
-            </figure>
-            <div class="shots"><button type="button" data-full="assets/media/globalex-1-operaciones.webp"><img src="assets/media/globalex-1-operaciones-sm.webp" alt="Lista de operaciones de Globalex con estado de validación y alertas" loading="lazy" width="480" height="300"></button><button type="button" data-full="assets/media/globalex-2-alertas.webp"><img src="assets/media/globalex-2-alertas-sm.webp" alt="Alertas de cruce: el ajuste incluido no coincide con el esperado" loading="lazy" width="480" height="300"></button><button type="button" data-full="assets/media/globalex-3-extraccion.webp"><img src="assets/media/globalex-3-extraccion-sm.webp" alt="Revisión de una factura: campos extraídos por IA con porcentaje de confianza" loading="lazy" width="480" height="300"></button></div>
           </div>
         </article>
 
@@ -682,7 +674,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
         <article class="proj case flip" id="p-realtor" style="--act-c: var(--act-mid)">
           <div class="case-text">
             <div class="proj-top"><span class="label">proptech · desarrollado de cero</span></div>
-            <h3>RealtorMatch</h3>
+            <h3>Plataforma de tasaciones</h3>
             <p>Tasación de propiedades en CABA y AMBA que conecta a quien quiere vender con el agente inmobiliario indicado. La construí desde cero: backend, app, landing y bot.</p>
             <p class="ai"><span class="label">dónde está la IA</span>Bot de WhatsApp con conversación abierta, extractor de datos e informes redactados por IA con controles de salida.</p>
             <div class="metrics">
@@ -695,18 +687,18 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
           <div class="case-media">
             <figure class="demo">
               <button class="zoom" type="button">ampliar ⤢</button>
-              <video width="1280" height="800" muted loop playsinline preload="none" poster="assets/media/realtormatch-app.webp" aria-label="Demo de RealtorMatch: detalle de una tasación, desglose de comparables e informe redactado por IA"><source src="assets/media/realtormatch-app.webm" type="video/webm"><source src="assets/media/realtormatch-app.mp4" type="video/mp4"></video>
+              <video width="1280" height="800" muted loop playsinline preload="none" poster="assets/media/tasaciones-app.webp" aria-label="Demo de la plataforma: detalle de una tasación, desglose de comparables e informe redactado por IA"><source src="assets/media/tasaciones-app.webm" type="video/webm"><source src="assets/media/tasaciones-app.mp4" type="video/mp4"></video>
               <figcaption>Demo real; la dirección de la propiedad está pixelada.</figcaption>
             </figure>
-            <div class="shots"><button type="button" data-full="assets/media/realtormatch-1-landing.webp"><img src="assets/media/realtormatch-1-landing-sm.webp" alt="Landing de RealtorMatch: el match con agentes" loading="lazy" width="480" height="300"></button><button type="button" data-full="assets/media/realtormatch-2-informe.webp"><img src="assets/media/realtormatch-2-informe-sm.webp" alt="Portada del informe de tasación generado" loading="lazy" width="480" height="300"></button><button type="button" data-full="assets/media/realtormatch-3-comparables.webp"><img src="assets/media/realtormatch-3-comparables-sm.webp" alt="Comparables del mercado ordenados por valor por metro cuadrado" loading="lazy" width="480" height="300"></button><button type="button" data-full="assets/media/realtormatch-4-valuacion.webp"><img src="assets/media/realtormatch-4-valuacion-sm.webp" alt="Valuación y precio sugerido del informe" loading="lazy" width="480" height="300"></button></div>
+            <div class="shots"><button type="button" data-full="assets/media/tasaciones-1-landing.webp"><img src="assets/media/tasaciones-1-landing-sm.webp" alt="Landing de la plataforma: el match con agentes" loading="lazy" width="480" height="300"></button><button type="button" data-full="assets/media/tasaciones-2-informe.webp"><img src="assets/media/tasaciones-2-informe-sm.webp" alt="Portada del informe de tasación generado" loading="lazy" width="480" height="300"></button><button type="button" data-full="assets/media/tasaciones-3-comparables.webp"><img src="assets/media/tasaciones-3-comparables-sm.webp" alt="Comparables del mercado ordenados por valor por metro cuadrado" loading="lazy" width="480" height="300"></button><button type="button" data-full="assets/media/tasaciones-4-valuacion.webp"><img src="assets/media/tasaciones-4-valuacion-sm.webp" alt="Valuación y precio sugerido del informe" loading="lazy" width="480" height="300"></button></div>
           </div>
         </article>
 
-        <article class="proj case" id="p-sarapura" style="--act-c: var(--act-mid)">
+        <article class="proj case" id="p-eventos" style="--act-c: var(--act-mid)">
           <div class="case-text">
-            <div class="proj-top"><span class="label">Sarapura · cotizador de eventos</span></div>
-            <h3>Cotizador de Sarapura</h3>
-            <p>Sarapura hace iluminación, sonido y efectos para eventos. El equipo arma propuestas por salón, pista y pack, con margen por ítem y precios redondeados, y el cliente recibe una página donde suma adicionales y acepta la propuesta.</p>
+            <div class="proj-top"><span class="label">eventos · cotizador</span></div>
+            <h3>Cotizador de eventos</h3>
+            <p>Para una empresa de iluminación, sonido y efectos para eventos. Su equipo arma propuestas por salón, pista y pack, con margen por ítem y precios redondeados, y el cliente recibe una página donde suma adicionales y acepta la propuesta.</p>
             <div class="metrics">
               <div class="metric"><div class="v">80</div><div class="k">PRs entre frontend y backend</div></div>
             </div>
@@ -715,10 +707,10 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
           <div class="case-media">
             <figure class="demo">
               <button class="zoom" type="button">ampliar ⤢</button>
-              <video width="1280" height="800" muted loop playsinline preload="none" poster="assets/media/sarapura-demo.webp" aria-label="Demo de Sarapura: armado de una propuesta en vivo y la página que recibe el cliente"><source src="assets/media/sarapura-demo.webm" type="video/webm"><source src="assets/media/sarapura-demo.mp4" type="video/mp4"></video>
+              <video width="1280" height="800" muted loop playsinline preload="none" poster="assets/media/eventos-demo.webp" aria-label="Demo del cotizador: armado de una propuesta en vivo y la página que recibe el cliente"><source src="assets/media/eventos-demo.webm" type="video/webm"><source src="assets/media/eventos-demo.mp4" type="video/mp4"></video>
               <figcaption>Demo en stage; nombres de clientes y comisiones fuera de cuadro.</figcaption>
             </figure>
-            <div class="shots"><button type="button" data-full="assets/media/sarapura-1-armado.webp"><img src="assets/media/sarapura-1-armado-sm.webp" alt="Armado de una propuesta con margen por ítem y total en vivo" loading="lazy" width="480" height="300"></button><button type="button" data-full="assets/media/sarapura-2-propuesta-cliente.webp"><img src="assets/media/sarapura-2-propuesta-cliente-sm.webp" alt="Portada de la propuesta que recibe el cliente" loading="lazy" width="480" height="300"></button><button type="button" data-full="assets/media/sarapura-3-adicionales.webp"><img src="assets/media/sarapura-3-adicionales-sm.webp" alt="Adicionales que el cliente puede sumar a su evento" loading="lazy" width="480" height="300"></button></div>
+            <div class="shots"><button type="button" data-full="assets/media/eventos-1-armado.webp"><img src="assets/media/eventos-1-armado-sm.webp" alt="Armado de una propuesta con margen por ítem y total en vivo" loading="lazy" width="480" height="300"></button><button type="button" data-full="assets/media/eventos-2-propuesta-cliente.webp"><img src="assets/media/eventos-2-propuesta-cliente-sm.webp" alt="Portada de la propuesta que recibe el cliente" loading="lazy" width="480" height="300"></button><button type="button" data-full="assets/media/eventos-3-adicionales.webp"><img src="assets/media/eventos-3-adicionales-sm.webp" alt="Adicionales que el cliente puede sumar a su evento" loading="lazy" width="480" height="300"></button></div>
           </div>
         </article>
 
@@ -856,8 +848,8 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
 
   /* ---------- salida: distribución de PRs (GitHub, nov 2026) ---------- */
   const PRS = [
-    ["Globalex · revisión aduanera", 228], ["Bravía · agente WhatsApp + Odoo", 223], ["RealtorMatch · tasaciones", 180],
-    ["Estima", 123], ["Sarapura · cotizador", 80], ["MVP Accelerator", 79], ["Otros 15 repos", 118]
+    ["Despachante · revisión aduanera", 228], ["Marca de bebidas · agente WhatsApp + Odoo", 223], ["Proptech · tasaciones", 180],
+    ["Estima", 123], ["Eventos · cotizador", 80], ["MVP Accelerator", 79], ["Otros 15 repos", 118]
   ];
   const total = PRS.reduce((s, [, v]) => s + v, 0);
   const max = PRS[0][1];
@@ -1003,11 +995,11 @@ footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wr
     { id: "mem", l: 2, t: "Memoria", d: "Memoria persistente que se mantiene actualizada, en AlterNata.", go: "#p-alternata" },
     { id: "mcp", l: 2, t: "MCP · Claude Code", d: "Servidor MCP, skills propias y Claude Agent SDK.", go: "#habilidades" },
     // capa 3: proyectos
-    { id: "pw", l: 3, t: "Bravía · WhatsApp + Odoo", d: "Agente de Bravía Kombucha: atención por WhatsApp conectada a Odoo, con RAG y escalado a humano.", go: "#p-whatsapp" },
-    { id: "pd", l: 3, t: "Globalex · aduana", d: "Revisión documental para Globalex: tres agentes que extraen y cruzan documentos de comercio exterior.", go: "#p-docs" },
-    { id: "pr", l: 3, t: "RealtorMatch", d: "Tasación inmobiliaria desarrollada de cero: bot de WhatsApp e informes redactados por IA.", go: "#p-realtor" },
+    { id: "pw", l: 3, t: "Agente WhatsApp + Odoo", d: "Agente para una marca de bebidas: atención por WhatsApp conectada a Odoo, con RAG y escalado a humano.", go: "#p-whatsapp" },
+    { id: "pd", l: 3, t: "Revisión aduanera", d: "Revisión documental para un despachante de aduana: tres agentes que extraen y cruzan documentos de comercio exterior.", go: "#p-docs" },
+    { id: "pr", l: 3, t: "Tasaciones", d: "Tasación inmobiliaria desarrollada de cero: bot de WhatsApp e informes redactados por IA.", go: "#p-realtor" },
     { id: "pe", l: 3, t: "Estima", d: "Proyecto propio: de idea a producción en 2 meses, con servidor MCP.", go: "#p-estima" },
-    { id: "ps", l: 3, t: "Sarapura", d: "Cotizador de eventos: propuestas con margen por ítem y página para el cliente.", go: "#p-sarapura" },
+    { id: "ps", l: 3, t: "Cotizador de eventos", d: "Cotizador de eventos: propuestas con margen por ítem y página para el cliente.", go: "#p-eventos" },
     { id: "pa", l: 3, t: "MVP Accelerator", d: "Framework base con fábrica de modelos LLM.", go: "#p-accel" },
     { id: "palt", l: 3, t: "AlterNata", d: "Mi second brain en Discord: responde por mí y pide aprobación antes de actuar.", go: "#p-alternata" },
     { id: "pal", l: 3, t: "Alter", d: "Asistente por voz sobre Claude Agent SDK. Open source.", go: "#p-alter" },
